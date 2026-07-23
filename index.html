@@ -186,13 +186,19 @@
     .short-player .info{padding:0.5rem 0.7rem 0.7rem}
     .short-player .info h3{font-size:0.68rem}
 
-    .v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;margin-top:2rem}
-    .s-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;margin-top:2rem}
+    .v-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
+    .v-grid .player-container,.v-grid .short-player{flex:1 1 300px;min-width:260px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .v-grid .player-container:hover,.v-grid .short-player:hover{flex:1 1 360px;z-index:10}
+    .s-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:stretch}
+    .s-grid .short-player{flex:1 1 160px;min-width:130px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .s-grid .short-player:hover{flex:1 1 200px;z-index:10}
 
     .vid-wrap{margin-top:2rem}
 
     /* ✦ MEMES SECTION ✦ */
-    .meme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin-top:2rem}
+    .meme-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
+    .meme-grid .player-container{flex:1 1 300px;min-width:260px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .meme-grid .player-container:hover{flex:1 1 360px;z-index:10}
     .meme-grid .player-container .thumb-wrap img{aspect-ratio:16/9;object-fit:cover}
     .meme-label{
       display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;
@@ -443,6 +449,7 @@
         <p>Available for editing, motion graphics, and crypto content.</p>
         <div class="c-links">
           <a href="mailto:jemseditions@gmail.com" class="c-link">✉️ jemseditions@gmail.com</a>
+          <a href="https://x.com/Jems_editions" target="_blank" class="c-link">🐦 X / Twitter</a>
           <a href="https://www.youtube.com/@Jems_Editions" target="_blank" class="c-link">📺 YouTube</a>
         </div>
       </div>
