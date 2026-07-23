@@ -50,99 +50,12 @@
       6%{opacity:0}
       100%{transform:translate(-700px,350px) rotate(-25deg);opacity:0}
     }
-
-    /* ── Floating planets ── */
-    .planet{
-      position:fixed;border-radius:50%;z-index:0;pointer-events:none;
-      opacity:0.4;
-    }
-    .planet .ring{
-      position:absolute;top:50%;left:50%;border-radius:50%;
-      border:1.5px solid rgba(255,255,255,0.15);
-      transform:translate(-50%,-50%) rotateX(65deg);
-      pointer-events:none;
-    }
-    .planet--1{
-      width:300px;height:300px;bottom:-60px;left:-80px;
-      background:radial-gradient(circle at 35% 35%,rgba(124,58,237,0.5) 0%,rgba(124,58,237,0.15) 40%,transparent 70%);
-      box-shadow:0 0 80px rgba(124,58,237,0.1),inset 0 0 60px rgba(124,58,237,0.05);
-      animation:planetDrift 20s ease-in-out infinite alternate;
-    }
-    .planet--1 .ring{width:400px;height:110px;border-color:rgba(124,58,237,0.2);animation:ringSpin 25s linear infinite}
-    .planet--2{
-      width:200px;height:200px;top:40%;right:-60px;
-      background:radial-gradient(circle at 35% 35%,rgba(6,182,212,0.45) 0%,rgba(6,182,212,0.12) 40%,transparent 70%);
-      box-shadow:0 0 60px rgba(6,182,212,0.08),inset 0 0 40px rgba(6,182,212,0.04);
-      animation:planetDrift 25s ease-in-out infinite alternate;animation-delay:-8s;
-    }
-    .planet--2 .ring{width:280px;height:80px;border-color:rgba(6,182,212,0.15);animation:ringSpin 30s linear infinite reverse}
-    .planet--3{
-      width:160px;height:160px;top:70%;left:0%;
-      background:radial-gradient(circle at 35% 35%,rgba(245,158,11,0.4) 0%,rgba(245,158,11,0.1) 40%,transparent 70%);
-      box-shadow:0 0 50px rgba(245,158,11,0.08),inset 0 0 30px rgba(245,158,11,0.03);
-      animation:planetDrift 30s ease-in-out infinite alternate;animation-delay:-15s;
-    }
-    .planet--3 .ring{width:220px;height:60px;border-color:rgba(245,158,11,0.15);animation:ringSpin 20s linear infinite}
-
-    /* ── UFOs ── */
-    .ufo{
-      position:fixed;z-index:0;pointer-events:none;
-      animation:ufoFly 25s linear infinite;
-    }
-    .ufo .body{
-      width:40px;height:12px;border-radius:50%;
-      background:linear-gradient(180deg,rgba(200,200,220,0.3),rgba(150,150,180,0.15));
-      border:1px solid rgba(255,255,255,0.08);
-      position:relative;
-    }
-    .ufo .body::before{
-      content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);
-      width:16px;height:10px;border-radius:50% 50% 0 0;
-      background:rgba(200,200,220,0.2);
-      border:1px solid rgba(255,255,255,0.06);
-      border-bottom:none;
-    }
-    .ufo .body::after{
-      content:'';position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
-      width:6px;height:4px;border-radius:50%;
-      background:rgba(120,80,255,0.15);
-      box-shadow:0 0 10px rgba(120,80,255,0.2);
-      animation:ufoLight 2s ease-in-out infinite;
-    }
-    @keyframes ufoLight{
-      0%,100%{opacity:0.3;box-shadow:0 0 6px rgba(120,80,255,0.1)}
-      50%{opacity:1;box-shadow:0 0 20px rgba(120,80,255,0.4)}
-    }
-    .ufo--1{top:15%;right:-60px;animation:ufoFly 30s linear infinite}
-    .ufo--2{top:55%;right:-60px;animation:ufoFly 35s linear infinite;animation-delay:-12s}
-    .ufo--3{top:30%;right:-60px;animation:ufoFly 28s linear infinite;animation-delay:-22s}
-    @keyframes ufoFly{
-      0%{transform:translateX(0) translateY(0)}
-      10%{transform:translateX(-200px) translateY(-8px)}
-      25%{transform:translateX(-500px) translateY(3px)}
-      40%{transform:translateX(-800px) translateY(-5px)}
-      55%{transform:translateX(-1100px) translateY(6px)}
-      70%{transform:translateX(-1400px) translateY(-3px)}
-      85%{transform:translateX(-1700px) translateY(4px)}
-      100%{transform:translateX(-2000px) translateY(0)}
-    }
-    @keyframes planetDrift{
-      0%{transform:translate(0,0) scale(1)}
-      50%{transform:translate(20px,-20px) scale(1.03)}
-      100%{transform:translate(-10px,15px) scale(0.97)}
-    }
-    @keyframes ringSpin{
-      0%{transform:translate(-50%,-50%) rotateX(65deg) rotate(0deg)}
-      100%{transform:translate(-50%,-50%) rotateX(65deg) rotate(360deg)}
-    }
     .bg-glow{
       position:fixed;width:500px;height:500px;border-radius:50%;filter:blur(140px);
       opacity:0.08;z-index:0;pointer-events:none;
       animation:glowDrift 25s ease-in-out infinite alternate;
     }
     .bg-glow--1{background:#7c3aed;top:-10%;left:-5%}
-    .bg-glow--2{background:#06b6d4;bottom:-15%;right:-5%;animation-delay:-8s}
-    .bg-glow--3{background:#f59e0b;top:50%;left:60%;animation-delay:-16s}
     @keyframes glowDrift{
       0%{transform:translate(0,0)scale(1)}
       33%{transform:translate(60px,-40px)scale(1.1)}
@@ -164,7 +77,7 @@
     nav.scrolled{background:rgba(3,3,6,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
     nav .logo{display:flex;align-items:center;gap:0.75rem;font-weight:800;font-size:1rem;letter-spacing:-0.02em}
     nav .logo img{height:28px;width:28px;border-radius:6px;object-fit:cover;border:1px solid rgba(124,58,237,0.2)}
-    nav .logo span{background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    nav .logo span{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     nav .links{display:flex;gap:1.5rem}
     nav .links a{
       color:rgba(255,255,255,0.35);text-decoration:none;
@@ -173,7 +86,7 @@
     }
     nav .links a::after{
       content:'';position:absolute;bottom:-4px;left:0;
-      width:0;height:1.5px;background:linear-gradient(90deg,#7c3aed,#06b6d4);transition:width 0.3s;
+      width:0;height:1.5px;background:linear-gradient(90deg,#a78bfa,#7c3aed);transition:width 0.3s;
     }
     nav .links a:hover{color:#fff}
     nav .links a:hover::after{width:100%}
@@ -196,9 +109,9 @@
     .sec-desc{color:rgba(255,255,255,0.35);max-width:500px;font-size:0.85rem;margin-bottom:0.25rem}
     .sec-desc i{color:#7c3aed;font-style:normal}
     .sec-title .accent{
-      background:linear-gradient(135deg,#7c3aed,#f59e0b,#06b6d4);
+      background:linear-gradient(135deg,#a78bfa,#7c3aed);
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      text-shadow:0 0 40px rgba(124,58,237,0.2),0 0 80px rgba(124,58,237,0.08);
+      text-shadow:0 0 30px rgba(124,58,237,0.1);
     }
 
     .hero{min-height:90vh;display:flex;align-items:center;padding-top:60px}
@@ -213,7 +126,7 @@
     .hero .badge .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
     .hero h1{font-size:3.5rem;font-weight:900;line-height:1.05;margin-bottom:1rem;letter-spacing:-0.03em}
-    .hero h1 .grad{background:linear-gradient(135deg,#7c3aed,#06b6d4,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite;text-shadow:0 0 40px rgba(124,58,237,0.2),0 0 80px rgba(124,58,237,0.1)}
+    .hero h1 .grad{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite;text-shadow:0 0 40px rgba(124,58,237,0.15),0 0 80px rgba(124,58,237,0.06)}
     @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
     .hero p{color:rgba(255,255,255,0.4);font-size:0.95rem;margin-bottom:2rem;max-width:440px;line-height:1.7}
     .hero .cta-group{display:flex;gap:1rem;flex-wrap:wrap}
@@ -225,7 +138,7 @@
     .btn::before{content:'';position:absolute;inset:0;border-radius:12px;opacity:0;transition:opacity 0.3s;background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent)}
     .btn:hover::before{opacity:1}
     .btn-primary{
-      background:linear-gradient(135deg,#7c3aed,#06b6d4);color:#fff;
+      background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;
       box-shadow:0 4px 25px rgba(124,58,237,0.2);
     }
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(124,58,237,0.35)}
@@ -242,7 +155,7 @@
     }
     .hero-frame::before{
       content:'';position:absolute;inset:-3px;border-radius:50%;
-      background:conic-gradient(from 0deg,#7c3aed,#06b6d4,#f59e0b,#ec4899,#7c3aed);
+      background:conic-gradient(from 0deg,#a78bfa,#7c3aed,#6d28d9,#a78bfa);
       z-index:-1;animation:spin 8s linear infinite;
     }
     @keyframes spin{to{transform:rotate(360deg)}}
@@ -334,7 +247,7 @@
     .sk-item .name{font-size:0.78rem;font-weight:600}
     .sk-item .lvl{font-size:0.5rem;color:rgba(255,255,255,0.2);font-family:'JetBrains Mono',monospace;margin-top:0.15rem;letter-spacing:0.1em}
     .sk-bar{width:100%;height:2px;border-radius:2px;background:rgba(255,255,255,0.03);margin-top:0.5rem;overflow:hidden}
-    .sk-bar .fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#06b6d4);transition:width 1s ease}
+    .sk-bar .fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#a78bfa);transition:width 1s ease}
 
     .c-box{margin-top:2rem;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:2.5rem;text-align:center}
     .c-box h3{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem}
@@ -372,15 +285,7 @@
   <div class="shooting-star shooting-star--4"></div>
   <div class="shooting-star shooting-star--5"></div>
   <div class="shooting-star shooting-star--6"></div>
-  <div class="planet planet--1"><div class="ring"></div></div>
-  <div class="planet planet--2"><div class="ring"></div></div>
-  <div class="planet planet--3"><div class="ring"></div></div>
-  <div class="ufo ufo--1"><div class="body"></div></div>
-  <div class="ufo ufo--2"><div class="body"></div></div>
-  <div class="ufo ufo--3"><div class="body"></div></div>
   <div class="bg-glow bg-glow--1"></div>
-  <div class="bg-glow bg-glow--2"></div>
-  <div class="bg-glow bg-glow--3"></div>
 
   <nav>
     <div class="logo">
