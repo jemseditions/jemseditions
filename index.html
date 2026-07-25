@@ -623,6 +623,10 @@
 
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    // Scroll to top on refresh
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+
     // ── Scroll reveal ──
     const obs = new IntersectionObserver((e) => { e.forEach(x => { if(x.isIntersecting) x.target.classList.add('vis') }) }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
     document.querySelectorAll('.rv').forEach(el => obs.observe(el));
