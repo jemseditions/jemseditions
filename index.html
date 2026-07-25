@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JemsEditions — Portfolio</title>
+  <title>JemsEditions — Video Editor Portfolio</title>
+  <meta name="description" content="JemsEditions — Video editor specializing in motion graphics, crypto content, and cinematic storytelling. 4+ years of experience." />
+  <meta name="keywords" content="video editor, motion graphics, crypto, jupiter, solana, jemseditions, capcut, davinci resolve" />
+  <meta name="author" content="JemsEditions" />
+  <meta property="og:title" content="JemsEditions — Video Editor Portfolio" />
+  <meta property="og:description" content="Video editor specializing in motion graphics, crypto content, and cinematic storytelling." />
+  <meta property="og:image" content="https://jemseditions.github.io/jemseditions/logo.png" />
+  <meta property="og:url" content="https://jemseditions.github.io/jemseditions/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -15,6 +25,30 @@
       overflow-x:hidden;line-height:1.6;
     }
     ::selection{background:rgba(120,80,255,0.4);color:#fff}
+
+    /* ── PRELOADER ── */
+    #preloader{
+      position:fixed;inset:0;z-index:99999;
+      background:#030306;
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      transition:opacity 0.6s;
+    }
+    #preloader.hide{opacity:0;pointer-events:none}
+    #preloader .pl-title{
+      font-size:2.5rem;font-weight:900;
+      background:linear-gradient(135deg,#a78bfa,#7c3aed);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      animation:plPulse 1.5s ease-in-out infinite;
+    }
+    #preloader .pl-bar{
+      width:160px;height:2px;background:rgba(124,58,237,0.1);border-radius:2px;margin-top:1.5rem;overflow:hidden;
+    }
+    #preloader .pl-bar .pl-fill{
+      height:100%;width:0%;background:linear-gradient(90deg,#7c3aed,#a78bfa);
+      border-radius:2px;animation:plLoad 1.2s ease forwards;
+    }
+    @keyframes plPulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    @keyframes plLoad{0%{width:0%}100%{width:100%}}
 
     .bg-grid{
       position:fixed;inset:0;
@@ -213,6 +247,29 @@
 
     footer{position:relative;z-index:1;text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,0.03);font-size:0.65rem;color:rgba(255,255,255,0.15);font-family:'JetBrains Mono',monospace}
 
+    /* ── BRANDS ── */
+    .brands-grid{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+    .brand-item{
+      padding:0.7rem 1.4rem;border-radius:10px;
+      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
+      color:rgba(255,255,255,0.25);font-size:0.7rem;font-weight:600;
+      font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;
+      transition:all 0.3s;
+    }
+    .brand-item:hover{border-color:rgba(124,58,237,0.2);color:rgba(255,255,255,0.6);background:rgba(124,58,237,0.03);transform:translateY(-2px)}
+
+    /* ── COPY TOAST ── */
+    .copy-toast{
+      position:fixed;bottom:90px;right:30px;z-index:40;
+      padding:0.6rem 1.2rem;border-radius:10px;
+      background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.2);
+      color:#a78bfa;font-size:0.75rem;font-weight:500;
+      backdrop-filter:blur(10px);
+      opacity:0;transform:translateY(10px);pointer-events:none;
+      transition:all 0.3s;
+    }
+    .copy-toast.show{opacity:1;transform:translateY(0);pointer-events:auto}
+
     /* ── OVERLAY ── */
     .logo-video-overlay{position:fixed;inset:0;z-index:9999;background:#030306;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s}
     .logo-video-overlay.active{opacity:1;pointer-events:auto}
@@ -237,6 +294,12 @@
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="pl-title">JemsEditions</div>
+    <div class="pl-bar"><div class="pl-fill"></div></div>
+  </div>
+
   <div class="bg-grid"></div>
   <div class="shooting-star shooting-star--1"></div>
   <div class="shooting-star shooting-star--2"></div>
@@ -274,6 +337,9 @@
     <span class="pulse-dot"></span>
     Hire Me
   </a>
+
+  <!-- Copy Toast -->
+  <div class="copy-toast" id="copy-toast">✉️ Email copied!</div>
 
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="home">
@@ -324,6 +390,26 @@
           <p>CapCut, DaVinci Resolve — but the tool doesn't matter. What matters is the result. Fast turnaround, clean edits, and zero excuses.</p>
           <p><strong>💡 Fun fact:</strong> I've edited content for Jupiter, Solana, and other crypto projects. I know the space, I know the pace, and I know what works.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BRANDS ═══ -->
+  <section>
+    <div class="container">
+      <div class="rv">
+        <div class="sec-tag">// clients</div>
+        <h2 class="sec-title">Worked <span class="accent">With</span></h2>
+        <p class="sec-desc">Brands and projects I've contributed to.</p>
+      </div>
+      <div class="brands-grid rv">
+        <span class="brand-item">Jupiter</span>
+        <span class="brand-item">Solana</span>
+        <span class="brand-item">Jupiverse</span>
+        <span class="brand-item">Snark Health</span>
+        <span class="brand-item">$STUPID</span>
+        <span class="brand-item">$VIBE</span>
+        <span class="brand-item">OkayBears Co-Founder</span>
       </div>
     </div>
   </section>
@@ -631,6 +717,40 @@
         };
       });
     }
+
+    // ── Preloader ──
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('hide');
+        setTimeout(() => {
+          document.getElementById('preloader').style.display = 'none';
+        }, 600);
+      }, 600);
+    });
+
+    // ── Copy email to clipboard ──
+    document.querySelectorAll('.c-link[href^="mailto:"]').forEach(el => {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        const email = this.href.replace('mailto:', '');
+        navigator.clipboard.writeText(email).then(() => {
+          const toast = document.getElementById('copy-toast');
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2500);
+        });
+      });
+    });
+
+    // ── Google Analytics placeholder ──
+    // Uncomment and replace GA_MEASUREMENT_ID with your actual ID:
+    // const script = document.createElement('script');
+    // script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+    // script.async = true;
+    // document.head.appendChild(script);
+    // window.dataLayer = window.dataLayer || [];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js', new Date());
+    // gtag('config', 'GA_MEASUREMENT_ID');
 
     // ── YouTube Player ──
     document.querySelectorAll('.player-container, .short-player').forEach(el => {
