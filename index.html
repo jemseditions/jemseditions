@@ -26,42 +26,19 @@
       background:#fff;z-index:1;pointer-events:none;
       opacity:0;box-shadow:0 0 6px rgba(255,255,255,0.8);
     }
-    .shooting-star::after{
-      content:'';position:absolute;top:50%;right:2px;
-      width:160px;height:1.5px;
-      background:linear-gradient(to left,rgba(255,255,255,0.7),rgba(200,180,255,0.3),transparent);
-      transform:translateY(-50%);
-    }
+    .shooting-star::after{content:'';position:absolute;top:50%;right:2px;width:160px;height:1.5px;background:linear-gradient(to left,rgba(255,255,255,0.7),rgba(200,180,255,0.3),transparent);transform:translateY(-50%)}
     .shooting-star--1{top:15%;left:60%;animation:shoot1 8s ease-in infinite}
     .shooting-star--2{top:35%;left:80%;animation:shoot2 11s ease-in infinite;animation-delay:-4s}
     .shooting-star--3{top:55%;left:30%;animation:shoot1 13s ease-in infinite;animation-delay:-7s}
     .shooting-star--4{top:20%;left:90%;animation:shoot2 9s ease-in infinite;animation-delay:-2s}
     .shooting-star--5{top:65%;left:50%;animation:shoot1 12s ease-in infinite;animation-delay:-9s}
     .shooting-star--6{top:40%;left:10%;animation:shoot2 10s ease-in infinite;animation-delay:-3s}
-    @keyframes shoot1{
-      0%{transform:translate(0,0) rotate(-35deg);opacity:0}
-      2%{opacity:1}
-      7%{opacity:0}
-      100%{transform:translate(-600px,450px) rotate(-35deg);opacity:0}
-    }
-    @keyframes shoot2{
-      0%{transform:translate(0,0) rotate(-25deg);opacity:0}
-      2%{opacity:1}
-      6%{opacity:0}
-      100%{transform:translate(-700px,350px) rotate(-25deg);opacity:0}
-    }
-    .bg-glow{
-      position:fixed;width:500px;height:500px;border-radius:50%;filter:blur(140px);
-      opacity:0.08;z-index:0;pointer-events:none;
-      animation:glowDrift 25s ease-in-out infinite alternate;
-    }
+    @keyframes shoot1{0%{transform:translate(0,0)rotate(-35deg);opacity:0}2%{opacity:1}7%{opacity:0}100%{transform:translate(-600px,450px)rotate(-35deg);opacity:0}}
+    @keyframes shoot2{0%{transform:translate(0,0)rotate(-25deg);opacity:0}2%{opacity:1}6%{opacity:0}100%{transform:translate(-700px,350px)rotate(-25deg);opacity:0}}
+
+    .bg-glow{position:fixed;width:500px;height:500px;border-radius:50%;filter:blur(140px);opacity:0.08;z-index:0;pointer-events:none;animation:glowDrift 25s ease-in-out infinite alternate}
     .bg-glow--1{background:#7c3aed;top:-10%;left:-5%}
-    @keyframes glowDrift{
-      0%{transform:translate(0,0)scale(1)}
-      33%{transform:translate(60px,-40px)scale(1.1)}
-      66%{transform:translate(-30px,50px)scale(0.95)}
-      100%{transform:translate(40px,20px)scale(1.05)}
-    }
+    @keyframes glowDrift{0%{transform:translate(0,0)scale(1)}33%{transform:translate(60px,-40px)scale(1.1)}66%{transform:translate(-30px,50px)scale(0.95)}100%{transform:translate(40px,20px)scale(1.05)}}
 
     ::-webkit-scrollbar{width:5px}
     ::-webkit-scrollbar-track{background:#030306}
@@ -75,61 +52,24 @@
       border-bottom:1px solid rgba(255,255,255,0.04);transition:all 0.4s cubic-bezier(.16,1,.3,1);
     }
     nav.scrolled{background:rgba(3,3,6,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
-    nav .logo{display:flex;align-items:center;gap:0.75rem;font-weight:800;font-size:1rem;letter-spacing:-0.02em}
+    nav .logo{display:flex;align-items:center;gap:0.75rem;font-weight:800;font-size:1rem;letter-spacing:-0.02em;cursor:pointer}
     nav .logo img{height:28px;width:28px;border-radius:6px;object-fit:cover;border:1px solid rgba(124,58,237,0.2)}
     nav .logo span{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     nav .links{display:flex;gap:1.5rem}
-    nav .links a{
-      color:rgba(255,255,255,0.35);text-decoration:none;
-      font-size:0.7rem;font-weight:500;font-family:'JetBrains Mono',monospace;
-      text-transform:uppercase;letter-spacing:0.12em;transition:color 0.3s;position:relative;
-    }
-    nav .links a::after{
-      content:'';position:absolute;bottom:-4px;left:0;
-      width:0;height:1.5px;background:linear-gradient(90deg,#a78bfa,#7c3aed);transition:width 0.3s;
-    }
+    nav .links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.7rem;font-weight:500;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;transition:color 0.3s;position:relative}
+    nav .links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#a78bfa,#7c3aed);transition:width 0.3s}
     nav .links a:hover{color:#fff}
     nav .links a:hover::after{width:100%}
 
-    /* ✦ SECTIONS — less gaps ✦ */
     section{position:relative;z-index:1;padding:4rem 2rem}
     .container{max-width:1100px;margin:0 auto}
 
-    .sec-tag{
-      font-family:'JetBrains Mono',monospace;
-      font-size:0.55rem;font-weight:500;text-transform:uppercase;
-      letter-spacing:0.25em;color:rgba(124,58,237,0.6);margin-bottom:0.4rem;
-    }
-    .sec-title{
-      font-size:2.4rem;font-weight:800;margin-bottom:0.5rem;
-      background:linear-gradient(135deg,#fff 20%,rgba(255,255,255,0.4));
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.15;
-      text-shadow:0 0 30px rgba(124,58,237,0.12),0 0 60px rgba(6,182,212,0.06);
-    }
+    .sec-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:500;text-transform:uppercase;letter-spacing:0.25em;color:rgba(124,58,237,0.6);margin-bottom:0.4rem}
+    .sec-title{font-size:2.4rem;font-weight:800;margin-bottom:0.5rem;background:linear-gradient(135deg,#fff 20%,rgba(255,255,255,0.4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.15;text-shadow:0 0 30px rgba(124,58,237,0.12)}
     .sec-desc{color:rgba(255,255,255,0.35);max-width:500px;font-size:0.85rem;margin-bottom:0.25rem}
     .sec-desc i{color:#7c3aed;font-style:normal}
-    .sec-title .accent{
-      background:linear-gradient(135deg,#a78bfa,#7c3aed);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      text-shadow:0 0 30px rgba(124,58,237,0.1);
-    }
+    .sec-title .accent{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 30px rgba(124,58,237,0.1)}
 
-    .hero{min-height:90vh;display:flex;align-items:center;padding-top:60px}
-    .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-    .hero .badge{
-      display:inline-flex;align-items:center;gap:0.5rem;
-      font-family:'JetBrains Mono',monospace;font-size:0.55rem;
-      font-weight:500;padding:0.3rem 0.85rem;border-radius:100px;
-      border:1px solid rgba(124,58,237,0.2);background:rgba(124,58,237,0.06);
-      color:#a78bfa;margin-bottom:1rem;letter-spacing:0.1em;
-    }
-    .hero .badge .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-    .hero h1{font-size:3.5rem;font-weight:900;line-height:1.05;margin-bottom:1rem;letter-spacing:-0.03em}
-    .hero h1 .grad{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite;text-shadow:0 0 40px rgba(124,58,237,0.15),0 0 80px rgba(124,58,237,0.06)}
-    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .hero p{color:rgba(255,255,255,0.4);font-size:0.95rem;margin-bottom:2rem;max-width:440px;line-height:1.7}
-    .hero .cta-group{display:flex;gap:1rem;flex-wrap:wrap}
     .btn{
       display:inline-flex;align-items:center;gap:0.5rem;
       padding:0.75rem 1.8rem;border-radius:12px;
@@ -137,114 +77,129 @@
     }
     .btn::before{content:'';position:absolute;inset:0;border-radius:12px;opacity:0;transition:opacity 0.3s;background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent)}
     .btn:hover::before{opacity:1}
-    .btn-primary{
-      background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;
-      box-shadow:0 4px 25px rgba(124,58,237,0.2);
-    }
+    .btn-primary{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 4px 25px rgba(124,58,237,0.2)}
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(124,58,237,0.35)}
-    .btn-outline{
-      background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1)
-    }
+    .btn-outline{background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1)}
     .btn-outline:hover{border-color:rgba(124,58,237,0.4);color:#fff;transform:translateY(-2px)}
 
+    /* ── HERO ── */
+    .hero{min-height:90vh;display:flex;align-items:center;padding-top:60px}
+    .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .hero .badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:500;padding:0.3rem 0.85rem;border-radius:100px;border:1px solid rgba(124,58,237,0.2);background:rgba(124,58,237,0.06);color:#a78bfa;margin-bottom:1rem;letter-spacing:0.1em}
+    .hero .badge .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero h1{font-size:3.5rem;font-weight:900;line-height:1.05;margin-bottom:0.75rem;letter-spacing:-0.03em}
+    .hero h1 .grad{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite;text-shadow:0 0 40px rgba(124,58,237,0.15)}
+    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .hero p{color:rgba(255,255,255,0.4);font-size:0.95rem;margin-bottom:2rem;max-width:440px;line-height:1.7}
+
     .hero-visual{display:flex;justify-content:center;align-items:center}
-    .hero-frame{
-      width:260px;height:260px;border-radius:50%;position:relative;
-      overflow:hidden;background:rgba(255,255,255,0.01);
-      border:1px solid rgba(255,255,255,0.04);
-    }
-    .hero-frame::before{
-      content:'';position:absolute;inset:-3px;border-radius:50%;
-      background:conic-gradient(from 0deg,#a78bfa,#7c3aed,#6d28d9,#a78bfa);
-      z-index:-1;animation:spin 8s linear infinite;
-    }
+    .hero-frame{width:260px;height:260px;border-radius:50%;position:relative;overflow:hidden;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.04)}
+    .hero-frame::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(from 0deg,#a78bfa,#7c3aed,#6d28d9,#a78bfa);z-index:-1;animation:spin 8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     .hero-frame img{position:absolute;inset:3px;border-radius:50%;width:calc(100% - 6px);height:calc(100% - 6px);object-fit:cover}
-    .hero-frame:hover{transform:scale(1.02);transition:transform 0.3s}
+    .hero-frame:hover img{transform:scale(1.04);transition:transform 0.4s}
 
-    /* ✦ CARDS ✦ */
+    /* ── STATS ROW ── */
+    .stats-row{display:flex;gap:2rem;margin:1.5rem 0;flex-wrap:wrap}
+    .stat-item{text-align:left}
+    .stat-item .num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .stat-item .label{font-size:0.6rem;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;margin-top:0.2rem}
+
+    /* ── ABOUT ── */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:center}
+    .about-text p{color:rgba(255,255,255,0.45);font-size:0.9rem;margin-bottom:1rem;line-height:1.7}
+    .about-text p strong{color:rgba(255,255,255,0.7)}
+    .about-text .about-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:1rem}
+    .about-text .about-tags span{
+      font-size:0.55rem;font-weight:500;padding:0.25rem 0.7rem;border-radius:6px;
+      background:rgba(124,58,237,0.08);color:#a78bfa;
+      font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;
+      border:1px solid rgba(124,58,237,0.1);
+    }
+
+    /* ── FLOATING CTA ── */
+    .float-cta{
+      position:fixed;bottom:30px;right:30px;z-index:50;
+      display:flex;align-items:center;gap:0.6rem;
+      padding:0.8rem 1.5rem;border-radius:14px;
+      background:linear-gradient(135deg,#7c3aed,#6d28d9);
+      color:#fff;text-decoration:none;font-weight:600;font-size:0.8rem;
+      box-shadow:0 8px 30px rgba(124,58,237,0.3);
+      transition:all 0.3s cubic-bezier(.16,1,.3,1);
+      border:none;cursor:pointer;
+    }
+    .float-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(124,58,237,0.45)}
+    .float-cta .pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+
+    /* ── CARDS ── */
+    .flex-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
+    .flex-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .flex-grid .player-container:hover{flex:1 1 360px;z-index:10}
+    .flex-grid .short-player{flex:1 1 160px;min-width:130px;max-width:220px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .flex-grid .short-player:hover{flex:1 1 200px;z-index:10}
+
     .player-container,.short-player{
       position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
       background:#08080e;border:1px solid rgba(255,255,255,0.04);
-      transition:all 0.4s cubic-bezier(.16,1,.3,1);
+      transition:all 0.5s cubic-bezier(.16,1,.3,1);
     }
-    .player-container:hover,.short-player:hover{
-      border-color:rgba(124,58,237,0.25);transform:translateY(-4px);
-      box-shadow:0 20px 50px rgba(0,0,0,0.5);
-    }
+    .player-container::after,.short-player::after{content:'';position:absolute;inset:-1px;border-radius:15px;background:linear-gradient(135deg,#7c3aed,#a78bfa);z-index:-1;opacity:0;transition:opacity 0.4s}
+    .player-container:hover::after,.short-player:hover::after{opacity:0.6}
+    .player-container:hover,.short-player:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.5)}
+
     .player-container .thumb-wrap,.short-player .thumb-wrap{position:relative;width:100%;overflow:hidden}
-    .player-container .thumb-wrap img{width:100%;display:block;transition:transform 0.5s}
-    .player-container:hover .thumb-wrap img,.short-player:hover .thumb-wrap img{transform:scale(1.03)}
+    .player-container .thumb-wrap img{width:100%;display:block;transition:transform 0.6s}
+    .player-container:hover .thumb-wrap img,.short-player:hover .thumb-wrap img{transform:scale(1.06)}
     .short-player .thumb-wrap img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
-    .player-container .ov,.short-player .ov{
-      position:absolute;inset:0;
-      display:flex;align-items:center;justify-content:center;
-      background:rgba(0,0,0,0.25);transition:all 0.3s;pointer-events:none;
-    }
-    .player-container:hover .ov,.short-player:hover .ov{background:rgba(0,0,0,0.08)}
+
+    .player-container .ov,.short-player .ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);transition:all 0.4s;pointer-events:none}
+    .player-container:hover .ov,.short-player:hover .ov{background:rgba(0,0,0,0.05)}
+
     .player-container .pb,.short-player .pb{
-      pointer-events:none;
-      width:60px;height:60px;border-radius:50%;
+      pointer-events:none;width:60px;height:60px;border-radius:50%;
       background:linear-gradient(135deg,#7c3aed,rgba(124,58,237,0.7));
       display:flex;align-items:center;justify-content:center;
-      transition:all 0.4s cubic-bezier(.16,1,.3,1);
-      box-shadow:0 4px 25px rgba(124,58,237,0.3);
-      border:1px solid rgba(255,255,255,0.1);
+      transition:all 0.5s;box-shadow:0 4px 25px rgba(124,58,237,0.3);border:1px solid rgba(255,255,255,0.1);
     }
     .short-player .pb{width:44px;height:44px}
-    .player-container:hover .pb,.short-player:hover .pb{transform:scale(1.12);box-shadow:0 8px 40px rgba(124,58,237,0.5)}
+    .player-container:hover .pb,.short-player:hover .pb{transform:scale(1.18);box-shadow:0 0 50px rgba(124,58,237,0.5)}
     .player-container .pb svg{width:22px;height:22px;fill:#fff;margin-left:3px}
     .short-player .pb svg{width:18px;height:18px;fill:#fff;margin-left:2px}
-    .info{
-      position:absolute;bottom:0;left:0;right:0;
-      padding:0.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));
-    }
-    .info h3{font-size:0.85rem;font-weight:600;margin-bottom:0.15rem}
-    .info .tag{
-      display:inline-block;font-size:0.5rem;font-weight:500;
-      padding:0.1rem 0.4rem;border-radius:3px;
-      background:rgba(124,58,237,0.15);color:#a78bfa;
-      font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;
-    }
-    .player-container .yt-player,.short-player .yt-player{
-      position:absolute;top:0;left:0;width:100%;height:100%;z-index:5;
-    }
-    .player-container .yt-player iframe,.short-player .yt-player iframe{width:100%;height:100%;border:0}
 
+    .info{position:absolute;bottom:0;left:0;right:0;padding:0.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));transition:all 0.4s}
+    .player-container:hover .info,.short-player:hover .info{padding-bottom:1.2rem}
+    .info h3{font-size:0.85rem;font-weight:600;margin-bottom:0.15rem}
+    .player-container:hover .info h3,.short-player:hover .info h3{color:#fff}
+    .info .tag{display:inline-block;font-size:0.5rem;font-weight:500;padding:0.1rem 0.4rem;border-radius:3px;background:rgba(124,58,237,0.15);color:#a78bfa;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em}
+
+    .player-container .yt-player,.short-player .yt-player{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
+    .player-container .yt-player iframe,.short-player .yt-player iframe{width:100%;height:100%;border:0}
     .player-container.featured .thumb-wrap img{aspect-ratio:16/9;object-fit:cover}
     .short-player .info{padding:0.5rem 0.7rem 0.7rem}
     .short-player .info h3{font-size:0.68rem}
 
     .v-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
-    .v-grid .player-container,.v-grid .short-player{flex:1 1 300px;min-width:260px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .v-grid .player-container,.v-grid .short-player{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s;z-index:1}
     .v-grid .player-container:hover,.v-grid .short-player:hover{flex:1 1 360px;z-index:10}
     .s-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:stretch}
-    .s-grid .short-player{flex:1 1 160px;min-width:130px;max-width:220px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .s-grid .short-player{flex:1 1 160px;min-width:130px;max-width:220px;transition:all 0.5s;z-index:1}
     .s-grid .short-player:hover{flex:1 1 200px;z-index:10}
-
     .vid-wrap{margin-top:2rem}
 
-    /* ✦ MEMES SECTION ✦ */
     .meme-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
-    .meme-grid .player-container{flex:1 1 300px;min-width:260px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
+    .meme-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s;z-index:1}
     .meme-grid .player-container:hover{flex:1 1 360px;z-index:10}
     .meme-grid .player-container .thumb-wrap img{aspect-ratio:16/9;object-fit:cover}
-    .meme-label{
-      display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;
-      font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;
-      text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;
-    }
+    .meme-label{display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem}
     .meme-label.stupid{background:rgba(245,158,11,0.15);color:#f59e0b}
     .meme-label.vibe{background:rgba(236,72,153,0.15);color:#ec4899}
 
-    .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.8rem;margin-top:2rem}
-    .sk-item{
-      background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);
-      border-radius:10px;padding:1.2rem 0.8rem;text-align:center;transition:all 0.3s;
-    }
+    .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.8rem;margin-top:2rem}
+    .sk-item{background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:1.3rem 0.8rem;text-align:center;transition:all 0.3s}
     .sk-item:hover{border-color:rgba(124,58,237,0.2);transform:translateY(-2px);background:rgba(124,58,237,0.02);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
-    .sk-item .icon{font-size:1.4rem;margin-bottom:0.3rem}
-    .sk-item .name{font-size:0.78rem;font-weight:600}
+    .sk-item .icon{font-size:1.5rem;margin-bottom:0.3rem}
+    .sk-item .name{font-size:0.8rem;font-weight:600}
     .sk-item .lvl{font-size:0.5rem;color:rgba(255,255,255,0.2);font-family:'JetBrains Mono',monospace;margin-top:0.15rem;letter-spacing:0.1em}
     .sk-bar{width:100%;height:2px;border-radius:2px;background:rgba(255,255,255,0.03);margin-top:0.5rem;overflow:hidden}
     .sk-bar .fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#a78bfa);transition:width 1s ease}
@@ -253,68 +208,35 @@
     .c-box h3{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem}
     .c-box p{color:rgba(255,255,255,0.35);margin-bottom:1.5rem;font-size:0.85rem}
     .c-links{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
-    .c-link{
-      display:inline-flex;align-items:center;gap:0.5rem;
-      padding:0.6rem 1.3rem;border-radius:10px;
-      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);
-      color:rgba(255,255,255,0.5);text-decoration:none;
-      font-size:0.78rem;font-weight:500;transition:all 0.3s;
-    }
+    .c-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.3rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.78rem;font-weight:500;transition:all 0.3s}
     .c-link:hover{border-color:#7c3aed;color:#fff;background:rgba(124,58,237,0.06);transform:translateY(-2px)}
 
     footer{position:relative;z-index:1;text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,0.03);font-size:0.65rem;color:rgba(255,255,255,0.15);font-family:'JetBrains Mono',monospace}
 
+    /* ── OVERLAY ── */
+    .logo-video-overlay{position:fixed;inset:0;z-index:9999;background:#030306;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s}
+    .logo-video-overlay.active{opacity:1;pointer-events:auto}
+    .logo-video-overlay canvas{position:absolute;inset:0;width:100%;height:100%}
+    .logo-video-overlay .lv-text{position:relative;z-index:2;text-align:center;font-family:'Space Grotesk',sans-serif;opacity:0;transform:scale(0.8)}
+    .logo-video-overlay .lv-text .lv-title{font-size:4rem;font-weight:900;background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.03em;text-shadow:0 0 60px rgba(124,58,237,0.3)}
+    .logo-video-overlay .lv-text .lv-sub{font-size:1rem;color:rgba(255,255,255,0.3);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;margin-top:0.5rem}
+    .lv-close{position:absolute;top:20px;right:30px;z-index:3;color:rgba(255,255,255,0.2);font-size:1.8rem;cursor:pointer;transition:color 0.3s;border:none;background:none;font-family:'Inter',sans-serif}
+    .lv-close:hover{color:#fff}
+
     .rv{opacity:0;transform:translateY(25px);transition:all 0.6s cubic-bezier(.16,1,.3,1)}
     .rv.vis{opacity:1;transform:translateY(0)}
-
-    /* ── Logo video animation overlay ── */
-    .logo-video-overlay{
-      position:fixed;inset:0;z-index:9999;
-      background:#030306;
-      display:flex;align-items:center;justify-content:center;
-      opacity:0;pointer-events:none;
-      transition:opacity 0.4s;
-    }
-    .logo-video-overlay.active{opacity:1;pointer-events:auto}
-    .logo-video-overlay canvas{
-      position:absolute;inset:0;
-      width:100%;height:100%;
-    }
-    .logo-video-overlay .lv-text{
-      position:relative;z-index:2;
-      text-align:center;font-family:'Space Grotesk',sans-serif;
-      opacity:0;transform:scale(0.8);
-    }
-    .logo-video-overlay .lv-text .lv-title{
-      font-size:4rem;font-weight:900;
-      background:linear-gradient(135deg,#a78bfa,#7c3aed);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      letter-spacing:-0.03em;
-    }
-    .logo-video-overlay .lv-text .lv-sub{
-      font-size:1rem;color:rgba(255,255,255,0.3);
-      font-weight:300;letter-spacing:0.3em;text-transform:uppercase;
-      margin-top:0.5rem;
-    }
-    .lv-close{
-      position:absolute;top:20px;right:30px;z-index:3;
-      color:rgba(255,255,255,0.2);font-size:1.8rem;
-      cursor:pointer;transition:color 0.3s;border:none;background:none;
-      font-family:'Inter',sans-serif;
-    }
-    .lv-close:hover{color:#fff}
 
     @media(max-width:800px){
       nav .links{display:none}.hero .container{grid-template-columns:1fr;text-align:center}
       .hero p{margin-left:auto;margin-right:auto}.hero .cta-group{justify-content:center}
       .hero-visual{order:-1}.hero h1{font-size:2.5rem}.hero-frame{width:200px;height:200px}
-      .sec-title{font-size:1.8rem}.v-grid{grid-template-columns:1fr}.s-grid{grid-template-columns:repeat(2,1fr)}
-      .meme-grid{grid-template-columns:1fr}
+      .sec-title{font-size:1.8rem}.v-grid{flex-direction:column}.s-grid{grid-template-columns:repeat(2,1fr)}
+      .meme-grid{flex-direction:column}.stats-row{justify-content:center}.about-grid{grid-template-columns:1fr}
+      .float-cta{bottom:20px;right:20px;padding:0.6rem 1.2rem;font-size:0.7rem}
     }
   </style>
 </head>
 <body>
-
   <div class="bg-grid"></div>
   <div class="shooting-star shooting-star--1"></div>
   <div class="shooting-star shooting-star--2"></div>
@@ -324,7 +246,7 @@
   <div class="shooting-star shooting-star--6"></div>
   <div class="bg-glow bg-glow--1"></div>
 
-  <!-- Logo Video Overlay -->
+  <!-- Logo Overlay -->
   <div class="logo-video-overlay" id="logo-video-overlay">
     <button class="lv-close" id="lv-close">✕</button>
     <canvas id="lv-canvas"></canvas>
@@ -341,19 +263,30 @@
     </div>
     <div class="links">
       <a href="#work">Work</a>
+      <a href="#about">About</a>
       <a href="#memes">Memes</a>
-      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
+
+  <!-- Floating CTA -->
+  <a href="#contact" class="float-cta">
+    <span class="pulse-dot"></span>
+    Hire Me
+  </a>
 
   <!-- ═══ HERO ═══ -->
   <section class="hero" id="home">
     <div class="container">
       <div>
         <div class="badge"><span class="dot"></span> VIDEO EDITOR</div>
-        <h1>Jems<br/><span class="grad">Editions</span></h1>
+        <h1>JEMS<br/><span class="grad">EDITIONS</span></h1>
         <p>Video editor specializing in motion graphics, crypto content, and cinematic storytelling.</p>
+        <div class="stats-row">
+          <div class="stat-item"><div class="num">4+</div><div class="label">Years Editing</div></div>
+          <div class="stat-item"><div class="num">100+</div><div class="label">Videos Made</div></div>
+          <div class="stat-item"><div class="num">12+</div><div class="label">Projects Done</div></div>
+        </div>
         <div class="cta-group">
           <a href="#work" class="btn btn-primary">View Work →</a>
           <a href="#contact" class="btn btn-outline">Contact</a>
@@ -362,6 +295,36 @@
       <div class="hero-visual">
         <div class="hero-frame">
           <img src="logo.png" alt="JemsEditions" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="container">
+      <div class="rv">
+        <div class="sec-tag">// about</div>
+        <h2 class="sec-title">Who <span class="accent">I Am</span></h2>
+      </div>
+      <div class="about-grid rv">
+        <div class="about-text">
+          <p><strong>4 years</strong> of video editing experience — from crypto content and motion graphics to educational storytelling. I started editing as a hobby and turned it into a full-time craft.</p>
+          <p>I'm obsessed with <strong>improving my skills</strong> every single project. Whether it's mastering a new transition, nailing the perfect color grade, or learning advanced motion design — I push myself to be better with every video.</p>
+          <p>My goal is simple: make every frame count. If your video doesn't grab attention in the first 3 seconds, I haven't done my job.</p>
+          <div class="about-tags">
+            <span>CapCut Advanced</span>
+            <span>Motion Graphics</span>
+            <span>Color Grading</span>
+            <span>Sound Design</span>
+            <span>Storytelling</span>
+            <span>Vertical Content</span>
+          </div>
+        </div>
+        <div class="about-text">
+          <p><strong>What I work with:</strong></p>
+          <p>CapCut, After Effects, DaVinci Resolve — but the tool doesn't matter. What matters is the result. Fast turnaround, clean edits, and zero excuses.</p>
+          <p><strong>💡 Fun fact:</strong> I've edited content viewed by millions across Jupiter, Solana, OkayBears, and more crypto projects. I know the space, I know the pace, and I know what works.</p>
         </div>
       </div>
     </div>
@@ -396,20 +359,8 @@
         <p class="sec-desc">Animation, motion design, and visual <i>vibes</i>.</p>
       </div>
       <div class="v-grid rv">
-        <div class="player-container" data-id="KfJq8T5tyvQ">
-          <div class="thumb-wrap">
-            <img src="https://i.ytimg.com/vi/KfJq8T5tyvQ/maxresdefault.jpg" alt="Motion" loading="lazy" />
-            <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
-          </div>
-          <div class="info"><h3>Motion Graphics Reel</h3><span class="tag">Motion</span></div>
-        </div>
-        <div class="player-container" data-id="VzMy6LWtxus">
-          <div class="thumb-wrap">
-            <img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt="Jup and Juice" loading="lazy" />
-            <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
-          </div>
-          <div class="info"><h3>Jup and Juice — OkayBears</h3><span class="tag">Crypto</span></div>
-        </div>
+        <div class="player-container" data-id="KfJq8T5tyvQ"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KfJq8T5tyvQ/maxresdefault.jpg" alt="Motion" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Motion Graphics Reel</h3><span class="tag">Motion</span></div></div>
+        <div class="player-container" data-id="VzMy6LWtxus"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt="Jup and Juice" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jup and Juice — OkayBears</h3><span class="tag">Crypto</span></div></div>
       </div>
     </div>
   </section>
@@ -423,22 +374,10 @@
         <p class="sec-desc">Vertical content about the <i>Solana</i> ecosystem and <i>Jupiter Exchange</i>.</p>
       </div>
       <div class="s-grid rv">
-        <div class="short-player" data-id="KnKRXY32IZ0">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KnKRXY32IZ0/hqdefault.jpg" alt="Jupiter 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>Jupiter Exchange</h3></div>
-        </div>
-        <div class="short-player" data-id="dMylb-XqIos">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/dMylb-XqIos/hqdefault.jpg" alt="Jupiter 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>Jupiter Exchange</h3></div>
-        </div>
-        <div class="short-player" data-id="VsYogMO-7cE">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VsYogMO-7cE/hqdefault.jpg" alt="Solana" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>Solana</h3></div>
-        </div>
-        <div class="short-player" data-id="_NPTPR6kMDU">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/_NPTPR6kMDU/hqdefault.jpg" alt="Jupiter 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>Jupiter Exchange</h3></div>
-        </div>
+        <div class="short-player" data-id="KnKRXY32IZ0"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KnKRXY32IZ0/hqdefault.jpg" alt="Jupiter 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
+        <div class="short-player" data-id="dMylb-XqIos"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/dMylb-XqIos/hqdefault.jpg" alt="Jupiter 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
+        <div class="short-player" data-id="VsYogMO-7cE"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VsYogMO-7cE/hqdefault.jpg" alt="Solana" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Solana</h3></div></div>
+        <div class="short-player" data-id="_NPTPR6kMDU"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/_NPTPR6kMDU/hqdefault.jpg" alt="Jupiter 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
       </div>
     </div>
   </section>
@@ -452,14 +391,8 @@
         <p class="sec-desc">Educational content — <i>French for A1 beginners</i>.</p>
       </div>
       <div class="s-grid rv">
-        <div class="short-player" data-id="8DCi2C6ReDg">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/8DCi2C6ReDg/hqdefault.jpg" alt="French 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>French A1 — Beginner</h3></div>
-        </div>
-        <div class="short-player" data-id="YiAspOT0uu8">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YiAspOT0uu8/hqdefault.jpg" alt="French 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><h3>French A1 — Beginner</h3></div>
-        </div>
+        <div class="short-player" data-id="8DCi2C6ReDg"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/8DCi2C6ReDg/hqdefault.jpg" alt="French 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>French A1 — Beginner</h3></div></div>
+        <div class="short-player" data-id="YiAspOT0uu8"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YiAspOT0uu8/hqdefault.jpg" alt="French 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>French A1 — Beginner</h3></div></div>
       </div>
     </div>
   </section>
@@ -473,26 +406,11 @@
         <p class="sec-desc">Memes and edits for <i>$STUPID</i> and <i>$VIBE</i>.</p>
       </div>
       <div class="meme-grid rv">
-        <div class="player-container" data-id="JKcx1qdCK1A">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt="$STUPID 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div>
-        </div>
-        <div class="player-container" data-id="6nPwjlrcfrM">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/6nPwjlrcfrM/maxresdefault.jpg" alt="$STUPID 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div>
-        </div>
-        <div class="player-container" data-id="MdKh6WakcWg">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/MdKh6WakcWg/maxresdefault.jpg" alt="$STUPID 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div>
-        </div>
-        <div class="player-container" data-id="sJ6wCi_tn2c">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/sJ6wCi_tn2c/maxresdefault.jpg" alt="$VIBE 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div>
-        </div>
-        <div class="player-container" data-id="vXRN9On94e4">
-          <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/vXRN9On94e4/maxresdefault.jpg" alt="$VIBE 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div>
-          <div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div>
-        </div>
+        <div class="player-container" data-id="JKcx1qdCK1A"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt="$STUPID 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
+        <div class="player-container" data-id="6nPwjlrcfrM"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/6nPwjlrcfrM/maxresdefault.jpg" alt="$STUPID 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
+        <div class="player-container" data-id="MdKh6WakcWg"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/MdKh6WakcWg/maxresdefault.jpg" alt="$STUPID 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
+        <div class="player-container" data-id="sJ6wCi_tn2c"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/sJ6wCi_tn2c/maxresdefault.jpg" alt="$VIBE 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div></div>
+        <div class="player-container" data-id="vXRN9On94e4"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/vXRN9On94e4/maxresdefault.jpg" alt="$VIBE 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div></div>
       </div>
     </div>
   </section>
@@ -506,11 +424,11 @@
         <p class="sec-desc">Software and techniques I master.</p>
       </div>
       <div class="sk-grid">
-        <div class="sk-item rv"><div class="icon">✂️</div><div class="name">Editing</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:94%"></div></div></div>
+        <div class="sk-item rv"><div class="icon">✂️</div><div class="name">CapCut</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:95%"></div></div></div>
         <div class="sk-item rv"><div class="icon">🌀</div><div class="name">Motion Graphics</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:90%"></div></div></div>
         <div class="sk-item rv"><div class="icon">🎨</div><div class="name">Color Grading</div><div class="lvl">ADVANCED</div><div class="sk-bar"><div class="fill" style="width:85%"></div></div></div>
         <div class="sk-item rv"><div class="icon">📱</div><div class="name">Vertical Content</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:92%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">🔊</div><div class="name">Sound Design</div><div class="lvl">INTERMEDIATE</div><div class="sk-bar"><div class="fill" style="width:72%"></div></div></div>
+        <div class="sk-item rv"><div class="icon">🔊</div><div class="name">Sound Design</div><div class="lvl">ADVANCED</div><div class="sk-bar"><div class="fill" style="width:75%"></div></div></div>
         <div class="sk-item rv"><div class="icon">📝</div><div class="name">Story Editing</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:90%"></div></div></div>
       </div>
     </div>
@@ -540,75 +458,31 @@
 
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    // ── Scroll reveal ──
     const obs = new IntersectionObserver((e) => { e.forEach(x => { if(x.isIntersecting) x.target.classList.add('vis') }) }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
     document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-
-    // nav shadow on scroll
     const nv = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-      nv.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    window.addEventListener('scroll', () => { nv.classList.toggle('scrolled', window.scrollY > 20) });
 
-    // ── modern click sound ──
+    // ── Click sound ──
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
     let audioCtx;
     function playClick() {
       if (!audioCtx) audioCtx = new AudioCtx();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
+      osc.connect(gain); gain.connect(audioCtx.destination);
       osc.frequency.setValueAtTime(880, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.04);
       gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-      osc.start(audioCtx.currentTime);
-      osc.stop(audioCtx.currentTime + 0.08);
+      osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 0.08);
     }
 
-    // ── Logo click — crypto pixel blast ──
+    // ── Logo click — arcade pixel explosion ──
     const logoTrigger = document.getElementById('logo-trigger');
     if (logoTrigger) {
-      logoTrigger.style.cursor = 'pointer';
-      // Persistent floating pixels in background
-      const bgCanvas = document.createElement('canvas');
-      bgCanvas.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;width:100%;height:100%';
-      bgCanvas.width = window.innerWidth;
-      bgCanvas.height = window.innerHeight;
-      document.body.prepend(bgCanvas);
-      const bgCtx = bgCanvas.getContext('2d');
-      const floaters = [];
-      for (let i = 0; i < 40; i++) {
-        floaters.push({
-          x: Math.random() * bgCanvas.width, y: Math.random() * bgCanvas.height,
-          s: 2 + Math.random() * 6, sp: 0.1 + Math.random() * 0.3,
-          a: 0.02 + Math.random() * 0.08, dx: (Math.random() - 0.5) * 0.2, dy: (Math.random() - 0.5) * 0.2,
-          c: ['#7c3aed','#a78bfa','#6d28d9','#8b5cf6','#c4b5fd'][Math.floor(Math.random() * 5)]
-        });
-      }
-      function drawFloaters() {
-        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-        floaters.forEach(p => {
-          p.x += p.dx; p.y += p.dy;
-          if (p.x < 0 || p.x > bgCanvas.width) p.dx *= -1;
-          if (p.y < 0 || p.y > bgCanvas.height) p.dy *= -1;
-          p.a = 0.02 + Math.sin(Date.now() * p.sp * 0.001) * 0.04 + 0.04;
-          bgCtx.globalAlpha = p.a;
-          bgCtx.fillStyle = p.c;
-          bgCtx.fillRect(p.x - p.s/2, p.y - p.s/2, p.s, p.s);
-        });
-        requestAnimationFrame(drawFloaters);
-      }
-      drawFloaters();
-
-      // Resize handler
-      window.addEventListener('resize', () => {
-        bgCanvas.width = window.innerWidth;
-        bgCanvas.height = window.innerHeight;
-      });
-
-      // ── Click: BURST ──
-      logoTrigger.addEventListener('click', function(e) {
+      logoTrigger.addEventListener('click', function() {
         const overlay = document.getElementById('logo-video-overlay');
         const canvas = document.getElementById('lv-canvas');
         const ctx = canvas.getContext('2d');
@@ -623,100 +497,109 @@
         textEl.style.opacity = '';
         textEl.style.transform = '';
 
-        // ── pixel burst particles ──
         const rect = logoTrigger.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
-        const pixels = [];
-        const colors = ['#7c3aed','#a78bfa','#6d28d9','#8b5cf6','#c4b5fd','#f59e0b','#22d3ee','#ec4899'];
 
-        for (let i = 0; i < 200; i++) {
+        // Arcade pixels — monochrome purple/blue, sharp squares
+        const pixels = [];
+        for (let i = 0; i < 250; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = 2 + Math.random() * 8;
+          const speed = 1.5 + Math.random() * 10;
+          const gray = 100 + Math.floor(Math.random() * 155);
+          const shade = 0.2 + Math.random() * 0.6;
           pixels.push({
             x: cx, y: cy,
             vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            size: 2 + Math.random() * 6,
-            color: colors[Math.floor(Math.random() * colors.length)],
+            vy: Math.sin(angle) * speed - 1,
+            size: 3 + Math.random() * 7,
+            color: `rgba(${120 + Math.floor(Math.random()*60)}, ${60 + Math.floor(Math.random()*80)}, ${200 + Math.floor(Math.random()*55)}, ${shade})`,
             life: 1,
-            decay: 0.005 + Math.random() * 0.015,
-            rot: Math.random() * Math.PI * 2,
-            rotSpd: (Math.random() - 0.5) * 0.1
+            decay: 0.004 + Math.random() * 0.02
+          });
+        }
+
+        // Add a grid burst
+        for (let i = 0; i < 80; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 5 + Math.random() * 12;
+          pixels.push({
+            x: cx, y: cy,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2,
+            size: 2 + Math.random() * 3,
+            color: `rgba(${180 + Math.floor(Math.random()*75)}, 130, 255, ${0.3 + Math.random() * 0.5})`,
+            life: 1,
+            decay: 0.006 + Math.random() * 0.015
           });
         }
 
         let start = Date.now();
         let animId;
 
-        function animateBurst() {
+        function anim() {
           const elapsed = (Date.now() - start) / 1000;
           ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-          // Draw dark overlay with vignette
-          const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(canvas.width, canvas.height) * 0.7);
-          grad.addColorStop(0, 'rgba(3,3,6,0.5)');
-          grad.addColorStop(1, 'rgba(3,3,6,0.85)');
-          ctx.fillStyle = grad;
+          // Dark overlay
+          ctx.fillStyle = 'rgba(3,3,6,0.88)';
           ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-          // Draw pixel grid floor
-          if (elapsed > 0.1) {
-            ctx.strokeStyle = 'rgba(124,58,237,0.03)';
-            ctx.lineWidth = 0.5;
-            const gridSize = 40;
-            for (let gx = 0; gx < canvas.width; gx += gridSize) {
-              ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
-            }
-            for (let gy = 0; gy < canvas.height; gy += gridSize) {
-              ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
-            }
+          // Grid overlay (arcade floor)
+          ctx.strokeStyle = 'rgba(124,58,237,0.04)';
+          ctx.lineWidth = 0.5;
+          const gs = 50 + Math.sin(elapsed * 2) * 10;
+          for (let gx = 0; gx < canvas.width; gx += gs)
+            { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke(); }
+          for (let gy = 0; gy < canvas.height; gy += gs)
+            { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke(); }
+
+          // Scanline effect
+          ctx.fillStyle = `rgba(0,0,0,${0.03 + Math.sin(elapsed * 20) * 0.02})`;
+          for (let sy = 0; sy < canvas.height; sy += 3) {
+            ctx.fillRect(0, sy, canvas.width, 1);
           }
 
-          // Animate pixels
+          // Pixels
           pixels.forEach(p => {
             p.x += p.vx;
             p.y += p.vy;
-            p.vy += 0.05; // gravity
-            p.vx *= 0.98; // friction
-            p.vy *= 0.98;
+            p.vy += 0.04;
+            p.vx *= 0.97;
+            p.vy *= 0.97;
             p.life -= p.decay;
-            p.rot += p.rotSpd;
             if (p.life <= 0) return;
-            ctx.save();
-            ctx.translate(p.x, p.y);
-            ctx.rotate(p.rot);
             ctx.globalAlpha = Math.max(0, p.life);
             ctx.fillStyle = p.color;
-            ctx.shadowColor = p.color;
-            ctx.shadowBlur = 6;
-            ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
-            ctx.restore();
+            ctx.shadowColor = 'rgba(124,58,237,0.3)';
+            ctx.shadowBlur = 8;
+            ctx.fillRect(p.x - p.size/2, p.y - p.size/2, p.size, p.size);
           });
+          ctx.shadowBlur = 0;
 
-          // Text phase
-          if (elapsed > 0.2 && elapsed < 0.7) {
-            textEl.style.transition = 'all 0.6s cubic-bezier(.16,1,.3,1)';
+          // Text
+          if (elapsed > 0.15 && elapsed < 0.5) {
+            textEl.style.transition = 'all 0.5s cubic-bezier(.16,1,.3,1)';
             textEl.style.opacity = '1';
             textEl.style.transform = 'scale(1)';
           }
-          if (elapsed > 2.5) {
-            const fade = 1 - (elapsed - 2.5) / 0.8;
-            textEl.style.opacity = Math.max(0, fade);
-            textEl.style.transform = `scale(${1 + (1 - fade) * 0.3})`;
+          if (elapsed > 2.0) {
+            const f = Math.max(0, 1 - (elapsed - 2.0) / 0.8);
+            textEl.style.opacity = f;
+            textEl.style.transform = `scale(${1 + (1 - f) * 0.3})`;
           }
 
-          if (elapsed > 3.5) {
+          if (elapsed > 3.2) {
             overlay.classList.remove('active');
             overlay.style.opacity = '';
             cancelAnimationFrame(animId);
             return;
           }
-          animId = requestAnimationFrame(animateBurst);
+          animId = requestAnimationFrame(anim);
         }
-        animateBurst();
+        anim();
 
-        closeBtn.onclick = function() {
+        closeBtn.onclick = () => {
           overlay.classList.remove('active');
           overlay.style.opacity = '';
           cancelAnimationFrame(animId);
