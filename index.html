@@ -22,10 +22,10 @@ body:before{
   background-size:72px 72px;mask-image:linear-gradient(#000,transparent 80%)
 }
 a{color:inherit}
-.dot,.ring{position:fixed;z-index:99;pointer-events:none;left:0;top:0;opacity:0}
-.dot{width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 18px #c17fff}
-.ring{width:38px;height:38px;margin:-19px;border:1px solid #c17fff;border-radius:50%;transition:width .22s,height .22s,margin .22s,background .22s}
-.ring.hover{width:66px;height:66px;margin:-33px;background:rgba(140,61,255,.18)}
+.dot,.ring{position:fixed;z-index:999;pointer-events:none;left:0;top:0;opacity:0;transition:opacity .3s}
+.dot{width:5px;height:5px;margin:-2.5px;border-radius:50%;background:#fff;box-shadow:0 0 14px #c17fff;mix-blend-mode:difference}
+.ring{width:40px;height:40px;margin:-20px;border:1.5px solid rgba(193,127,255,.6);border-radius:50%;transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),margin .25s cubic-bezier(.16,1,.3,1),background .25s;backdrop-filter:blur(2px)}
+.ring.hover{width:70px;height:70px;margin:-35px;background:rgba(140,61,255,.12);border-color:rgba(193,127,255,.8);box-shadow:0 0 30px rgba(140,61,255,.15)}
 @media(pointer:fine){body,body a,body button{cursor:none}}
 
 nav{
@@ -42,8 +42,11 @@ nav{
   border:0;border-radius:13px;padding:15px 22px;
   background:linear-gradient(135deg,#7426ff,#ad55ff);
   box-shadow:0 9px 28px rgba(132,49,255,.42);color:#fff;
-  text-decoration:none;font-size:13px;font-weight:700
+  text-decoration:none;font-size:13px;font-weight:700;
+  display:inline-flex;align-items:center;gap:8px;position:relative
 }
+.hire .pulse-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;display:inline-block;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 
 .hero{
   min-height:calc(100vh - 92px);
@@ -81,21 +84,21 @@ section{padding:60px clamp(22px,7vw,132px)}
 .kicker{font:500 11px 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:#a25dff}
 section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;margin:15px 0 30px}
 
-/* ── Expanding flex grid ── */
-.flex-grid{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:stretch}
-.flex-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1;cursor:pointer}
-.flex-grid .player-container:hover{flex:1 1 370px;z-index:10}
-.flex-grid .player-container.featured{flex:1 1 100%;max-width:100%;min-width:0}
-.flex-grid .player-container.featured:hover{flex:1 1 100%}
-.flex-grid .player-container.featured .thumb-wrap img{aspect-ratio:16/9}
-.flex-grid .player-container.featured .info h3{font-size:1rem}
+/* ── Expanding grid (no jump on hover) ── */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin-top:2rem}
+.vid-grid .player-container.featured{grid-column:1/-1;max-width:800px;justify-self:center;width:100%}
+.vid-grid .player-container.featured .thumb-wrap img{aspect-ratio:16/9}
+.vid-grid .player-container.featured .info h3{font-size:1rem}
+
+.meme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
 
 .player-container{
   position:relative;border-radius:16px;overflow:hidden;
   background:#100c21;border:1px solid rgba(189,119,255,.15);
-  transition:all 0.5s cubic-bezier(.16,1,.3,1);
+  transition:transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s, border-color 0.4s;
+  cursor:pointer;will-change:transform;
 }
-.player-container:hover{transform:translateY(-4px);border-color:rgba(140,61,255,.3);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.player-container:hover{transform:scale(1.04);z-index:5;border-color:rgba(140,61,255,.3);box-shadow:0 20px 50px rgba(0,0,0,.5)}
 .player-container .thumb-wrap{position:relative;width:100%;overflow:hidden}
 .player-container .thumb-wrap img{width:100%;display:block;transition:transform .6s;aspect-ratio:16/9;object-fit:cover}
 .player-container:hover .thumb-wrap img{transform:scale(1.06)}
@@ -178,8 +181,9 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
   .reel{width:90%;right:5%;top:8%}
   .stats{gap:20px;flex-wrap:wrap}
   .links{display:none}
-  .flex-grid .player-container{flex:1 1 100%;max-width:100%;min-width:0}
+  .vid-grid,.meme-grid{grid-template-columns:1fr}
   .short-player{flex:1 1 130px;max-width:160px}
+  .vid-grid .player-container.featured{max-width:100%}
 }
 </style>
 </head>
@@ -191,14 +195,14 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 <nav>
   <a class="brand" href="#home"><img src="logo.png" alt=""><span>Jems<b>Editions</b></span></a>
   <div class="links"><a href="#home">Home</a><a href="#work">Work</a><a href="#memes">Memes</a><a href="#contact">Contact</a></div>
-  <a class="hire" href="#contact">Hire Me →</a>
+  <a class="hire" href="#contact"><span class="pulse-dot"></span> Let's Build →</a>
 </nav>
 
 <main id="home">
 <section class="hero">
   <div>
     <div class="eyebrow">Video editor & motion designer</div>
-    <h1>Turning footage<br>into <i>experiences.</i></h1>
+    <h1>Every frame<br>tells a <i>story.</i></h1>
     <p>Video editing, motion graphics and cinematic storytelling for brands, creators and innovative projects.</p>
     <div class="actions"><a class="button" href="#work">View My Work →</a><a class="ghost" href="#contact">Get in Touch →</a></div>
   </div>
@@ -223,10 +227,10 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 <!-- ═══ MAIN VIDEOS ═══ -->
 <section id="work">
   <div class="rv">
-    <div class="kicker">Selected work</div>
-    <h2>Stories that stop the scroll.</h2>
+    <div class="kicker">Showreel</div>
+    <h2>The reel that started it all — plus a few bangers.</h2>
   </div>
-  <div class="flex-grid rv">
+  <div class="vid-grid rv">
     <div class="player-container featured" data-id="Fki4Ibh7CuQ">
       <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel 2026" loading="lazy" />
         <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
@@ -286,7 +290,7 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
     <div class="kicker">// memes</div>
     <h2>Crypto Memes</h2>
   </div>
-  <div class="flex-grid rv">
+  <div class="meme-grid rv">
     <div class="player-container" data-id="vXRN9On94e4">
       <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/vXRN9On94e4/maxresdefault.jpg" alt="Vikings VIBE" loading="lazy" />
         <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
