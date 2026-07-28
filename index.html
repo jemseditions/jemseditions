@@ -1,835 +1,381 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JemsEditions — Video Editor Portfolio</title>
-  <meta name="description" content="JemsEditions — Video editor specializing in motion graphics, crypto content, and cinematic storytelling. 4+ years of experience." />
-  <meta name="keywords" content="video editor, motion graphics, crypto, jupiter, solana, jemseditions, capcut, davinci resolve" />
-  <meta name="author" content="JemsEditions" />
-  <meta property="og:title" content="JemsEditions — Video Editor Portfolio" />
-  <meta property="og:description" content="Video editor specializing in motion graphics, crypto content, and cinematic storytelling." />
-  <meta property="og:image" content="https://jemseditions.github.io/jemseditions/logo.png" />
-  <meta property="og:url" content="https://jemseditions.github.io/jemseditions/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="apple-touch-icon" href="logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Space Grotesk','Inter',sans-serif;
-      background:#030306;color:#ddd;
-      overflow-x:hidden;line-height:1.6;
-    }
-    ::selection{background:rgba(120,80,255,0.4);color:#fff}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JemsEditions — Video Editor</title>
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06050c;--p:#8b3dff;--t:#f7f4ff;--m:#aaa3ba;--l:rgba(182,123,255,.22)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Inter,sans-serif;
+  background:radial-gradient(circle at 0 0,#2a1262,transparent 27%),radial-gradient(circle at 100% 100%,#290b6b,transparent 27%),var(--bg);
+  color:var(--t);overflow-x:hidden
+}
+body:before{
+  content:'';position:fixed;inset:0;z-index:-1;opacity:.38;
+  background-image:linear-gradient(rgba(150,90,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(150,90,255,.08) 1px,transparent 1px);
+  background-size:72px 72px;mask-image:linear-gradient(#000,transparent 80%)
+}
+a{color:inherit}
+.dot,.ring{position:fixed;z-index:99;pointer-events:none;left:0;top:0;opacity:0}
+.dot{width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 18px #c17fff}
+.ring{width:38px;height:38px;margin:-19px;border:1px solid #c17fff;border-radius:50%;transition:width .22s,height .22s,margin .22s,background .22s}
+.ring.hover{width:66px;height:66px;margin:-33px;background:rgba(140,61,255,.18)}
+@media(pointer:fine){body,body a,body button{cursor:none}}
 
-    /* ── PRELOADER ── */
-    #preloader{
-      position:fixed;inset:0;z-index:99999;
-      background:#030306;
-      display:flex;align-items:center;justify-content:center;flex-direction:column;
-      transition:opacity 0.6s;
-    }
-    #preloader.hide{opacity:0;pointer-events:none}
-    #preloader .pl-title{
-      font-size:2.5rem;font-weight:900;
-      background:linear-gradient(135deg,#a78bfa,#7c3aed);
-      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-      animation:plPulse 1.5s ease-in-out infinite;
-    }
-    #preloader .pl-bar{
-      width:160px;height:2px;background:rgba(124,58,237,0.1);border-radius:2px;margin-top:1.5rem;overflow:hidden;
-    }
-    #preloader .pl-bar .pl-fill{
-      height:100%;width:0%;background:linear-gradient(90deg,#7c3aed,#a78bfa);
-      border-radius:2px;animation:plLoad 1.2s ease forwards;
-    }
-    @keyframes plPulse{0%,100%{opacity:1}50%{opacity:0.5}}
-    @keyframes plLoad{0%{width:0%}100%{width:100%}}
+nav{
+  height:92px;padding:0 clamp(22px,7vw,132px);
+  display:flex;align-items:center;justify-content:space-between
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:24px;font-weight:800;letter-spacing:-.06em}
+.brand img{width:43px;height:43px;border-radius:50%;object-fit:cover}
+.brand b{color:#a75cff}
+.links{display:flex;gap:5px;padding:7px;border:1px solid var(--l);border-radius:99px;background:rgba(8,6,18,.6)}
+.links a{padding:10px 17px;text-decoration:none;font-size:13px;color:#aaa5b9;border-radius:99px}
+.links a:first-child,.links a:hover{color:#fff;background:rgba(130,55,255,.2)}
+.hire,.button{
+  border:0;border-radius:13px;padding:15px 22px;
+  background:linear-gradient(135deg,#7426ff,#ad55ff);
+  box-shadow:0 9px 28px rgba(132,49,255,.42);color:#fff;
+  text-decoration:none;font-size:13px;font-weight:700
+}
 
-    .bg-grid{
-      position:fixed;inset:0;
-      background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
-      background-size:60px 60px;z-index:0;pointer-events:none
-    }
-    .shooting-star{
-      position:fixed;width:3px;height:3px;border-radius:50%;
-      background:#fff;z-index:1;pointer-events:none;
-      opacity:0;box-shadow:0 0 6px rgba(255,255,255,0.8);
-    }
-    .shooting-star::after{content:'';position:absolute;top:50%;right:2px;width:160px;height:1.5px;background:linear-gradient(to left,rgba(255,255,255,0.7),rgba(200,180,255,0.3),transparent);transform:translateY(-50%)}
-    .shooting-star--1{top:15%;left:60%;animation:shoot1 8s ease-in infinite}
-    .shooting-star--2{top:35%;left:80%;animation:shoot2 11s ease-in infinite;animation-delay:-4s}
-    .shooting-star--3{top:55%;left:30%;animation:shoot1 13s ease-in infinite;animation-delay:-7s}
-    .shooting-star--4{top:20%;left:90%;animation:shoot2 9s ease-in infinite;animation-delay:-2s}
-    .shooting-star--5{top:65%;left:50%;animation:shoot1 12s ease-in infinite;animation-delay:-9s}
-    .shooting-star--6{top:40%;left:10%;animation:shoot2 10s ease-in infinite;animation-delay:-3s}
-    @keyframes shoot1{0%{transform:translate(0,0)rotate(-35deg);opacity:0}2%{opacity:1}7%{opacity:0}100%{transform:translate(-600px,450px)rotate(-35deg);opacity:0}}
-    @keyframes shoot2{0%{transform:translate(0,0)rotate(-25deg);opacity:0}2%{opacity:1}6%{opacity:0}100%{transform:translate(-700px,350px)rotate(-25deg);opacity:0}}
+.hero{
+  min-height:calc(100vh - 92px);
+  padding:clamp(65px,8vw,115px) clamp(22px,7vw,132px) 55px;
+  display:grid;grid-template-columns:43% 57%;align-items:center
+}
+.eyebrow,.kicker{font:500 11px 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:#a25dff}
+.eyebrow:before{
+  content:'';display:inline-block;width:38px;height:2px;
+  margin:0 14px 3px 0;background:#984bff
+}
+.hero h1{font-size:clamp(3.6rem,5.5vw,6.5rem);line-height:.98;letter-spacing:-.07em;margin:25px 0}
+.hero h1 i{font-style:italic;background:linear-gradient(90deg,#8940ff,#ce7eff);-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--m);font-size:16px;line-height:1.7;max-width:455px}
+.actions{display:flex;gap:15px;margin-top:35px}
+.ghost{border:1px solid var(--l);border-radius:13px;padding:14px 21px;text-decoration:none;color:#d4cde3}
+.art{height:450px;position:relative}
+.back,.side,.reel{position:absolute;overflow:hidden;border:1px solid rgba(189,119,255,.36);background:#100c21;box-shadow:0 25px 60px #0008}
+.back{width:260px;height:165px;right:5%;top:4%;opacity:.6;transform:rotate(-5deg)}
+.back img,.side img{width:100%;height:100%;object-fit:cover}
+.side{width:170px;height:120px;right:1%;bottom:20%;border-radius:12px}
+.reel{width:min(470px,76%);aspect-ratio:16/9;right:15%;top:12%;border-radius:16px;cursor:pointer;text-decoration:none;display:block;transition:transform .3s}
+.reel:hover{transform:scale(1.02)}
+.reel img{width:100%;height:100%;object-fit:cover;display:block}
+.reel .ui{position:absolute;top:10px;left:12px;display:flex;gap:18px;font:11px 'DM Mono';color:rgba(255,255,255,.7)}
+.reel .ui span:first-child{color:#ff4466}
+.reel .play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.9);color:#1a0a36;display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:3px;box-shadow:0 4px 25px #0005}
+.reel .caption{position:absolute;bottom:10px;left:12px;right:12px;display:flex;justify-content:space-between;font:10px 'DM Mono';color:rgba(255,255,255,.5)}
+.stats{display:flex;gap:45px;grid-column:1/-1;margin-top:20px}
+.stat b{display:block;font-size:30px;font-weight:800;background:linear-gradient(90deg,#8940ff,#ce7eff);-webkit-background-clip:text;color:transparent}
+.stat span{font-size:11px;color:var(--m);display:block;margin-top:2px}
 
-    .bg-glow{position:fixed;width:500px;height:500px;border-radius:50%;filter:blur(140px);opacity:0.08;z-index:0;pointer-events:none;animation:glowDrift 25s ease-in-out infinite alternate}
-    .bg-glow--1{background:#7c3aed;top:-10%;left:-5%}
-    @keyframes glowDrift{0%{transform:translate(0,0)scale(1)}33%{transform:translate(60px,-40px)scale(1.1)}66%{transform:translate(-30px,50px)scale(0.95)}100%{transform:translate(40px,20px)scale(1.05)}}
+/* ── Sections ── */
+section{padding:60px clamp(22px,7vw,132px)}
+.kicker{font:500 11px 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:#a25dff}
+section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;margin:15px 0 30px}
 
-    ::-webkit-scrollbar{width:5px}
-    ::-webkit-scrollbar-track{background:#030306}
-    ::-webkit-scrollbar-thumb{background:#1a1a2e;border-radius:3px}
-    ::-webkit-scrollbar-thumb:hover{background:#7c3aed}
+/* ── Expanding flex grid ── */
+.flex-grid{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:stretch}
+.flex-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1;cursor:pointer}
+.flex-grid .player-container:hover{flex:1 1 370px;z-index:10}
+.flex-grid .player-container.featured{flex:1 1 100%;max-width:100%;min-width:0}
+.flex-grid .player-container.featured:hover{flex:1 1 100%}
+.flex-grid .player-container.featured .thumb-wrap img{aspect-ratio:16/9}
+.flex-grid .player-container.featured .info h3{font-size:1rem}
 
-    nav{
-      position:fixed;top:0;left:0;right:0;z-index:100;
-      padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;
-      background:rgba(3,3,6,0.75);backdrop-filter:blur(20px);
-      border-bottom:1px solid rgba(255,255,255,0.04);transition:all 0.4s cubic-bezier(.16,1,.3,1);
-    }
-    nav.scrolled{background:rgba(3,3,6,0.95);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
-    nav .logo{display:flex;align-items:center;gap:0.75rem;font-weight:800;font-size:1rem;letter-spacing:-0.02em;cursor:pointer}
-    nav .logo img{height:28px;width:28px;border-radius:6px;object-fit:cover;border:1px solid rgba(124,58,237,0.2)}
-    nav .logo span{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    nav .links{display:flex;gap:1.5rem}
-    nav .links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.7rem;font-weight:500;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;transition:color 0.3s;position:relative}
-    nav .links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:linear-gradient(90deg,#a78bfa,#7c3aed);transition:width 0.3s}
-    nav .links a:hover{color:#fff}
-    nav .links a:hover::after{width:100%}
+.player-container{
+  position:relative;border-radius:16px;overflow:hidden;
+  background:#100c21;border:1px solid rgba(189,119,255,.15);
+  transition:all 0.5s cubic-bezier(.16,1,.3,1);
+}
+.player-container:hover{transform:translateY(-4px);border-color:rgba(140,61,255,.3);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.player-container .thumb-wrap{position:relative;width:100%;overflow:hidden}
+.player-container .thumb-wrap img{width:100%;display:block;transition:transform .6s;aspect-ratio:16/9;object-fit:cover}
+.player-container:hover .thumb-wrap img{transform:scale(1.06)}
+.player-container .ov{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.3);transition:all .4s;pointer-events:none
+}
+.player-container:hover .ov{background:rgba(0,0,0,.05)}
+.player-container .pb{
+  pointer-events:none;width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;
+  transition:all .5s;box-shadow:0 4px 25px rgba(0,0,0,.3)
+}
+.player-container:hover .pb{transform:scale(1.15)}
+.player-container .pb svg{width:20px;height:20px;fill:#1a0a36;margin-left:3px}
+.info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:0.8rem 1rem;background:linear-gradient(transparent,rgba(6,5,12,.92));
+  transition:all .4s
+}
+.info h3{font-size:.85rem;font-weight:600;margin-bottom:.1rem}
+.player-container:hover .info{padding-bottom:1.2rem}
+.info .tag{
+  display:inline-block;font-size:.5rem;font-weight:600;
+  padding:.12rem .45rem;border-radius:4px;
+  background:rgba(140,61,255,.15);color:#a75cff;
+  font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em
+}
+.player-container .yt-embed{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
+.player-container .yt-embed iframe{width:100%;height:100%;border:0}
 
-    section{position:relative;z-index:1;padding:4rem 2rem}
-    .container{max-width:1100px;margin:0 auto}
+/* ── Shorts grid ── */
+.short-grid{
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:stretch;margin-top:2rem
+}
+.short-player{
+  flex:1 1 150px;min-width:120px;max-width:200px;
+  position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
+  background:#100c21;border:1px solid rgba(189,119,255,.15);
+  transition:all 0.5s cubic-bezier(.16,1,.3,1);
+  z-index:1
+}
+.short-player:hover{flex:1 1 190px;z-index:10;transform:translateY(-4px);border-color:rgba(140,61,255,.3);box-shadow:0 15px 40px rgba(0,0,0,.5)}
+.short-player .thumb-wrap{position:relative;width:100%;overflow:hidden}
+.short-player .thumb-wrap img{width:100%;display:block;aspect-ratio:9/16;object-fit:cover;transition:transform .5s}
+.short-player:hover .thumb-wrap img{transform:scale(1.06)}
+.short-player .ov{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.3);transition:all .4s;pointer-events:none
+}
+.short-player:hover .ov{background:rgba(0,0,0,.05)}
+.short-player .pb{
+  pointer-events:none;width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;
+  transition:all .4s
+}
+.short-player:hover .pb{transform:scale(1.1)}
+.short-player .pb svg{width:14px;height:14px;fill:#1a0a36;margin-left:2px}
+.short-player .info{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:.5rem .6rem .6rem;background:linear-gradient(transparent,rgba(6,5,12,.92))
+}
+.short-player .info h3{font-size:.65rem;font-weight:500;line-height:1.2}
+.short-player .yt-embed{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
+.short-player .yt-embed iframe{width:100%;height:100%;border:0}
 
-    .sec-tag{font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:500;text-transform:uppercase;letter-spacing:0.25em;color:rgba(124,58,237,0.6);margin-bottom:0.4rem}
-    .sec-title{font-size:2.4rem;font-weight:800;margin-bottom:0.5rem;background:linear-gradient(135deg,#fff 20%,rgba(255,255,255,0.4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.15;text-shadow:0 0 30px rgba(124,58,237,0.12)}
-    .sec-desc{color:rgba(255,255,255,0.35);max-width:500px;font-size:0.85rem;margin-bottom:0.25rem}
-    .sec-desc i{color:#7c3aed;font-style:normal}
-    .sec-title .accent{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 30px rgba(124,58,237,0.1)}
+/* ── Meme labels ── */
+.meme-label{display:inline-block;padding:.12rem .45rem;border-radius:4px;font-family:'DM Mono',monospace;font-size:.5rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.25rem}
+.meme-label.stupid{background:rgba(245,158,11,.15);color:#f59e0b}
+.meme-label.vibe{background:rgba(236,72,153,.15);color:#ec4899}
 
-    .btn{
-      display:inline-flex;align-items:center;gap:0.5rem;
-      padding:0.75rem 1.8rem;border-radius:12px;
-      font-size:0.8rem;font-weight:600;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;position:relative;overflow:hidden;
-    }
-    .btn::before{content:'';position:absolute;inset:0;border-radius:12px;opacity:0;transition:opacity 0.3s;background:linear-gradient(135deg,rgba(255,255,255,0.1),transparent)}
-    .btn:hover::before{opacity:1}
-    .btn-primary{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;box-shadow:0 4px 25px rgba(124,58,237,0.2)}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(124,58,237,0.35)}
-    .btn-outline{background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1)}
-    .btn-outline:hover{border-color:rgba(124,58,237,0.4);color:#fff;transform:translateY(-2px)}
+.rv{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
 
-    /* ── HERO ── */
-    .hero{min-height:90vh;display:flex;align-items:center;padding-top:60px}
-    .hero .container{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-    .hero .badge{display:inline-flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:500;padding:0.3rem 0.85rem;border-radius:100px;border:1px solid rgba(124,58,237,0.2);background:rgba(124,58,237,0.06);color:#a78bfa;margin-bottom:1rem;letter-spacing:0.1em}
-    .hero .badge .dot{width:5px;height:5px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-    .hero h1{font-size:3.5rem;font-weight:900;line-height:1.05;margin-bottom:0.75rem;letter-spacing:-0.03em}
-    .hero h1 .grad{background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradShift 4s ease infinite;text-shadow:0 0 40px rgba(124,58,237,0.15)}
-    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .hero p{color:rgba(255,255,255,0.4);font-size:0.95rem;margin-bottom:2rem;max-width:440px;line-height:1.7}
-
-    .hero-visual{display:flex;justify-content:center;align-items:center}
-    .hero-frame{width:260px;height:260px;border-radius:50%;position:relative;overflow:hidden;background:rgba(255,255,255,0.01);border:1px solid rgba(255,255,255,0.04)}
-    .hero-frame::before{content:'';position:absolute;inset:-3px;border-radius:50%;background:conic-gradient(from 0deg,#a78bfa,#7c3aed,#6d28d9,#a78bfa);z-index:-1;animation:spin 8s linear infinite}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    .hero-frame img{position:absolute;inset:3px;border-radius:50%;width:calc(100% - 6px);height:calc(100% - 6px);object-fit:cover}
-    .hero-frame:hover img{transform:scale(1.04);transition:transform 0.4s}
-
-    /* ── STATS ROW ── */
-    .stats-row{display:flex;gap:2rem;margin:1.5rem 0;flex-wrap:wrap}
-    .stat-item{text-align:left}
-    .stat-item .num{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
-    .stat-item .label{font-size:0.6rem;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;margin-top:0.2rem}
-
-    /* ── ABOUT ── */
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;align-items:center}
-    .about-text p{color:rgba(255,255,255,0.45);font-size:0.9rem;margin-bottom:1rem;line-height:1.7}
-    .about-text p strong{color:rgba(255,255,255,0.7)}
-    .about-text .about-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:1rem}
-    .about-text .about-tags span{
-      font-size:0.55rem;font-weight:500;padding:0.25rem 0.7rem;border-radius:6px;
-      background:rgba(124,58,237,0.08);color:#a78bfa;
-      font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.06em;
-      border:1px solid rgba(124,58,237,0.1);
-    }
-
-    /* ── FLOATING CTA ── */
-    .float-cta{
-      position:fixed;bottom:30px;right:30px;z-index:50;
-      display:flex;align-items:center;gap:0.6rem;
-      padding:0.8rem 1.5rem;border-radius:14px;
-      background:linear-gradient(135deg,#7c3aed,#6d28d9);
-      color:#fff;text-decoration:none;font-weight:600;font-size:0.8rem;
-      box-shadow:0 8px 30px rgba(124,58,237,0.3);
-      transition:all 0.3s cubic-bezier(.16,1,.3,1);
-      border:none;cursor:pointer;
-    }
-    .float-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 40px rgba(124,58,237,0.45)}
-    .float-cta .pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
-
-    /* ── CRYPTO BADGE ── */
-    .crypto-badge{
-      position:fixed;top:72px;right:30px;z-index:50;
-      display:flex;align-items:center;gap:0.4rem;
-      padding:0.35rem 0.8rem;border-radius:8px;
-      background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.08);
-      backdrop-filter:blur(12px);
-      animation:badgeFloat 4s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .crypto-badge .cb-icon{font-size:0.7rem;color:#a78bfa}
-    .crypto-badge .cb-text{
-      font-size:0.5rem;font-weight:600;font-family:'JetBrains Mono',monospace;
-      text-transform:uppercase;letter-spacing:0.15em;
-      color:rgba(255,255,255,0.2);
-    }
-    @keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-
-    /* ── CARDS ── */
-    .flex-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
-    .flex-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
-    .flex-grid .player-container:hover{flex:1 1 360px;z-index:10}
-    .flex-grid .short-player{flex:1 1 160px;min-width:130px;max-width:220px;transition:all 0.5s cubic-bezier(.16,1,.3,1);z-index:1}
-    .flex-grid .short-player:hover{flex:1 1 200px;z-index:10}
-
-    .player-container,.short-player{
-      position:relative;border-radius:14px;overflow:hidden;cursor:pointer;
-      background:#08080e;border:1px solid rgba(255,255,255,0.04);
-      transition:all 0.5s cubic-bezier(.16,1,.3,1);
-    }
-    .player-container::after,.short-player::after{content:'';position:absolute;inset:-1px;border-radius:15px;background:linear-gradient(135deg,#7c3aed,#a78bfa);z-index:-1;opacity:0;transition:opacity 0.4s}
-    .player-container:hover::after,.short-player:hover::after{opacity:0.6}
-    .player-container:hover,.short-player:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.5)}
-
-    .player-container .thumb-wrap,.short-player .thumb-wrap{position:relative;width:100%;overflow:hidden}
-    .player-container .thumb-wrap img{width:100%;display:block;transition:transform 0.6s}
-    .player-container:hover .thumb-wrap img,.short-player:hover .thumb-wrap img{transform:scale(1.06)}
-    .short-player .thumb-wrap img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block}
-
-    .player-container .ov,.short-player .ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.3);transition:all 0.4s;pointer-events:none}
-    .player-container:hover .ov,.short-player:hover .ov{background:rgba(0,0,0,0.05)}
-
-    .player-container .pb,.short-player .pb{
-      pointer-events:none;width:60px;height:60px;border-radius:50%;
-      background:linear-gradient(135deg,#7c3aed,rgba(124,58,237,0.7));
-      display:flex;align-items:center;justify-content:center;
-      transition:all 0.5s;box-shadow:0 4px 25px rgba(124,58,237,0.3);border:1px solid rgba(255,255,255,0.1);
-    }
-    .short-player .pb{width:44px;height:44px}
-    .player-container:hover .pb,.short-player:hover .pb{transform:scale(1.18);box-shadow:0 0 50px rgba(124,58,237,0.5)}
-    .player-container .pb svg{width:22px;height:22px;fill:#fff;margin-left:3px}
-    .short-player .pb svg{width:18px;height:18px;fill:#fff;margin-left:2px}
-
-    .info{position:absolute;bottom:0;left:0;right:0;padding:0.8rem 1rem;background:linear-gradient(transparent,rgba(0,0,0,0.85));transition:all 0.4s}
-    .player-container:hover .info,.short-player:hover .info{padding-bottom:1.2rem}
-    .info h3{font-size:0.85rem;font-weight:600;margin-bottom:0.15rem}
-    .player-container:hover .info h3,.short-player:hover .info h3{color:#fff}
-    .info .tag{display:inline-block;font-size:0.5rem;font-weight:500;padding:0.1rem 0.4rem;border-radius:3px;background:rgba(124,58,237,0.15);color:#a78bfa;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.05em}
-
-    .player-container .yt-player,.short-player .yt-player{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
-    .player-container .yt-player iframe,.short-player .yt-player iframe{width:100%;height:100%;border:0}
-    .player-container.featured .thumb-wrap img{aspect-ratio:16/9;object-fit:cover}
-    .short-player .info{padding:0.5rem 0.7rem 0.7rem}
-    .short-player .info h3{font-size:0.68rem}
-
-    .v-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
-    .v-grid .player-container,.v-grid .short-player{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s;z-index:1}
-    .v-grid .player-container:hover,.v-grid .short-player:hover{flex:1 1 360px;z-index:10}
-    .s-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;align-items:stretch}
-    .s-grid .short-player{flex:1 1 160px;min-width:130px;max-width:220px;transition:all 0.5s;z-index:1}
-    .s-grid .short-player:hover{flex:1 1 200px;z-index:10}
-    .vid-wrap{margin-top:2rem}
-
-    .meme-grid{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:2rem;align-items:stretch}
-    .meme-grid .player-container{flex:1 1 300px;min-width:260px;max-width:400px;transition:all 0.5s;z-index:1}
-    .meme-grid .player-container:hover{flex:1 1 360px;z-index:10}
-    .meme-grid .player-container .thumb-wrap img{aspect-ratio:16/9;object-fit:cover}
-    .meme-label{display:inline-block;padding:0.15rem 0.5rem;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:0.55rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem}
-    .meme-label.stupid{background:rgba(245,158,11,0.15);color:#f59e0b}
-    .meme-label.vibe{background:rgba(236,72,153,0.15);color:#ec4899}
-
-    .sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.8rem;margin-top:2rem}
-    .sk-item{background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:10px;padding:1.3rem 0.8rem;text-align:center;transition:all 0.3s}
-    .sk-item:hover{border-color:rgba(124,58,237,0.2);transform:translateY(-2px);background:rgba(124,58,237,0.02);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
-    .sk-item .icon{font-size:1.5rem;margin-bottom:0.3rem}
-    .sk-item .name{font-size:0.8rem;font-weight:600}
-    .sk-item .lvl{font-size:0.5rem;color:rgba(255,255,255,0.2);font-family:'JetBrains Mono',monospace;margin-top:0.15rem;letter-spacing:0.1em}
-    .sk-bar{width:100%;height:2px;border-radius:2px;background:rgba(255,255,255,0.03);margin-top:0.5rem;overflow:hidden}
-    .sk-bar .fill{height:100%;border-radius:2px;background:linear-gradient(90deg,#7c3aed,#a78bfa);transition:width 1s ease}
-
-    .c-box{margin-top:2rem;background:rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.04);border-radius:16px;padding:2.5rem;text-align:center}
-    .c-box h3{font-size:1.3rem;font-weight:700;margin-bottom:0.3rem}
-    .c-box p{color:rgba(255,255,255,0.35);margin-bottom:1.5rem;font-size:0.85rem}
-    .c-links{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap}
-    .c-link{display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.3rem;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.78rem;font-weight:500;transition:all 0.3s}
-    .c-link:hover{border-color:#7c3aed;color:#fff;background:rgba(124,58,237,0.06);transform:translateY(-2px)}
-
-    /* ── BACK TO TOP ── */
-    .back-top{
-      position:fixed;bottom:30px;left:30px;z-index:50;
-      width:40px;height:40px;border-radius:12px;
-      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
-      color:rgba(255,255,255,0.2);font-size:1.2rem;
-      display:flex;align-items:center;justify-content:center;
-      text-decoration:none;cursor:pointer;
-      transition:all 0.3s;opacity:0;pointer-events:none;
-    }
-    .back-top.visible{opacity:1;pointer-events:auto}
-    .back-top:hover{border-color:rgba(124,58,237,0.2);color:#a78bfa;transform:translateY(-2px)}
-
-    footer{position:relative;z-index:1;text-align:center;padding:1.5rem;border-top:1px solid rgba(255,255,255,0.03);font-size:0.65rem;color:rgba(255,255,255,0.15);font-family:'JetBrains Mono',monospace}
-
-    /* ── BRANDS ── */
-    .brands-grid{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
-    .brand-item{
-      padding:0.7rem 1.4rem;border-radius:10px;
-      background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);
-      color:rgba(255,255,255,0.25);font-size:0.7rem;font-weight:600;
-      font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;
-      transition:all 0.3s;
-    }
-    .brand-item:hover{border-color:rgba(124,58,237,0.2);color:rgba(255,255,255,0.6);background:rgba(124,58,237,0.03);transform:translateY(-2px)}
-
-    /* ── COPY TOAST ── */
-    .copy-toast{
-      position:fixed;bottom:90px;right:30px;z-index:40;
-      padding:0.6rem 1.2rem;border-radius:10px;
-      background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.2);
-      color:#a78bfa;font-size:0.75rem;font-weight:500;
-      backdrop-filter:blur(10px);
-      opacity:0;transform:translateY(10px);pointer-events:none;
-      transition:all 0.3s;
-    }
-    .copy-toast.show{opacity:1;transform:translateY(0);pointer-events:auto}
-
-    /* ── OVERLAY ── */
-    .logo-video-overlay{position:fixed;inset:0;z-index:9999;background:#030306;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s}
-    .logo-video-overlay.active{opacity:1;pointer-events:auto}
-    .logo-video-overlay canvas{position:absolute;inset:0;width:100%;height:100%}
-    .logo-video-overlay .lv-text{position:relative;z-index:2;text-align:center;font-family:'Space Grotesk',sans-serif;opacity:0;transform:scale(0.8)}
-    .logo-video-overlay .lv-text .lv-title{font-size:4rem;font-weight:900;background:linear-gradient(135deg,#a78bfa,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.03em;text-shadow:0 0 60px rgba(124,58,237,0.3)}
-    .logo-video-overlay .lv-text .lv-sub{font-size:1rem;color:rgba(255,255,255,0.3);font-weight:300;letter-spacing:0.3em;text-transform:uppercase;margin-top:0.5rem}
-    .lv-close{position:absolute;top:20px;right:30px;z-index:3;color:rgba(255,255,255,0.2);font-size:1.8rem;cursor:pointer;transition:color 0.3s;border:none;background:none;font-family:'Inter',sans-serif}
-    .lv-close:hover{color:#fff}
-
-    .rv{opacity:0;transform:translateY(25px);transition:all 0.6s cubic-bezier(.16,1,.3,1)}
-    .rv.vis{opacity:1;transform:translateY(0)}
-
-    @media(max-width:800px){
-      nav .links{display:none}.hero .container{grid-template-columns:1fr;text-align:center}
-      .hero p{margin-left:auto;margin-right:auto}.hero .cta-group{justify-content:center}
-      .hero-visual{order:-1}.hero h1{font-size:2.5rem}.hero-frame{width:200px;height:200px}
-      .sec-title{font-size:1.8rem}.v-grid{flex-direction:column}.s-grid{grid-template-columns:repeat(2,1fr)}
-      .meme-grid{flex-direction:column}.stats-row{justify-content:center}.about-grid{grid-template-columns:1fr}
-      .float-cta{bottom:20px;right:20px;padding:0.6rem 1.2rem;font-size:0.7rem}
-    }
-  </style>
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;padding-top:30px}
+  .art{height:300px;margin-top:20px}
+  .back{width:160px;height:100px;right:2%;top:2%}
+  .side{width:100px;height:70px;right:1%;bottom:10%}
+  .reel{width:90%;right:5%;top:8%}
+  .stats{gap:20px;flex-wrap:wrap}
+  .links{display:none}
+  .flex-grid .player-container{flex:1 1 100%;max-width:100%;min-width:0}
+  .short-player{flex:1 1 130px;max-width:160px}
+}
+</style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="pl-title">JemsEditions</div>
-    <div class="pl-bar"><div class="pl-fill"></div></div>
+
+<div class="dot"></div>
+<div class="ring"></div>
+
+<nav>
+  <a class="brand" href="#home"><img src="logo.png" alt=""><span>Jems<b>Editions</b></span></a>
+  <div class="links"><a href="#home">Home</a><a href="#work">Work</a><a href="#memes">Memes</a><a href="#contact">Contact</a></div>
+  <a class="hire" href="#contact">Hire Me →</a>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div>
+    <div class="eyebrow">Video editor & motion designer</div>
+    <h1>Turning footage<br>into <i>experiences.</i></h1>
+    <p>Video editing, motion graphics and cinematic storytelling for brands, creators and innovative projects.</p>
+    <div class="actions"><a class="button" href="#work">View My Work →</a><a class="ghost" href="#contact">Get in Touch →</a></div>
   </div>
+  <div class="art">
+    <div class="back"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt=""></div>
+    <div class="side"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt=""></div>
+    <a class="reel watch" href="https://youtu.be/Fki4Ibh7CuQ" data-id="Fki4Ibh7CuQ">
+      <img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel Jems Editions">
+      <div class="ui"><span>● REC</span><span>00:00:24</span></div>
+      <span class="play">▶</span>
+      <div class="caption"><span>JEMS EDITIONS</span><span>4K</span></div>
+    </a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>4+</b><span>Years Editing</span></div>
+    <div class="stat"><b>50+</b><span>Videos Made</span></div>
+    <div class="stat"><b>12+</b><span>Projects Done</span></div>
+  </div>
+</section>
+</main>
 
-  <div class="bg-grid"></div>
-  <div class="shooting-star shooting-star--1"></div>
-  <div class="shooting-star shooting-star--2"></div>
-  <div class="shooting-star shooting-star--3"></div>
-  <div class="shooting-star shooting-star--4"></div>
-  <div class="shooting-star shooting-star--5"></div>
-  <div class="shooting-star shooting-star--6"></div>
-  <div class="bg-glow bg-glow--1"></div>
-
-  <!-- Logo Overlay -->
-  <div class="logo-video-overlay" id="logo-video-overlay">
-    <button class="lv-close" id="lv-close">✕</button>
-    <canvas id="lv-canvas"></canvas>
-    <div class="lv-text" id="lv-text">
-      <div class="lv-title">JemsEditions</div>
-      <div class="lv-sub">Video Editor</div>
+<!-- ═══ MAIN VIDEOS ═══ -->
+<section id="work">
+  <div class="rv">
+    <div class="kicker">Selected work</div>
+    <h2>Stories that stop the scroll.</h2>
+  </div>
+  <div class="flex-grid rv">
+    <div class="player-container featured" data-id="Fki4Ibh7CuQ">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel 2026" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
+      </div>
+      <div class="info"><h3>Showreel 2026 — Jems Editions</h3><span class="tag">Showreel</span></div>
+    </div>
+    <div class="player-container" data-id="KfJq8T5tyvQ">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KfJq8T5tyvQ/maxresdefault.jpg" alt="Mortal Kombat" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
+      </div>
+      <div class="info"><h3>Mortal Kombat — Motion Graphics</h3><span class="tag">Motion</span></div>
+    </div>
+    <div class="player-container" data-id="YhWRC1jBvU0">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YhWRC1jBvU0/maxresdefault.jpg" alt="Presentation" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
+      </div>
+      <div class="info"><h3>Presentation — Jems Editions</h3><span class="tag">Showreel</span></div>
+    </div>
+    <div class="player-container" data-id="VzMy6LWtxus">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt="Jup and Juice" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
+      </div>
+      <div class="info"><h3>JUP &amp; JUICE with co-founder of Okay Bears</h3><span class="tag">Crypto</span></div>
     </div>
   </div>
+</section>
 
-  <nav>
-    <div class="logo" id="logo-trigger">
-      <img src="logo.png" alt="" onerror="this.style.display='none'" />
-      <span>JemsEditions</span>
-    </div>
-    <div class="links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#memes">Memes</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <!-- Floating CTA -->
-  <a href="#contact" class="float-cta">
-    <span class="pulse-dot"></span>
-    Hire Me
-  </a>
-
-  <!-- Crypto Badge -->
-  <div class="crypto-badge">
-    <span class="cb-icon">⧩</span>
-    <span class="cb-text">EDITOR</span>
+<!-- ═══ SHORTS ═══ -->
+<section>
+  <div class="rv">
+    <div class="kicker">// shorts</div>
+    <h2>Vertical Content</h2>
   </div>
+  <div class="short-grid rv">
+    <div class="short-player" data-id="KnKRXY32IZ0"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KnKRXY32IZ0/hqdefault.jpg" alt="Jupiter" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter — What is money?</h3></div></div>
+    <div class="short-player" data-id="dMylb-XqIos"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/dMylb-XqIos/hqdefault.jpg" alt="Steve Chen" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Steve Chen x Meow — Jupiter</h3></div></div>
+    <div class="short-player" data-id="_NPTPR6kMDU"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/_NPTPR6kMDU/hqdefault.jpg" alt="Verification" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Speeding Up Verification — Jupiter</h3></div></div>
+    <div class="short-player" data-id="VsYogMO-7cE"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VsYogMO-7cE/hqdefault.jpg" alt="Solana" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>What is Solana?</h3></div></div>
+  </div>
+</section>
 
-  <!-- Back to Top -->
-  <a href="#" class="back-top" id="back-top">↑</a>
+<!-- ═══ FRENCH ═══ -->
+<section>
+  <div class="rv">
+    <div class="kicker">// français</div>
+    <h2>French for Beginners</h2>
+  </div>
+  <div class="short-grid rv">
+    <div class="short-player" data-id="8DCi2C6ReDg"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/8DCi2C6ReDg/hqdefault.jpg" alt="French Grocery" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>A1 French — Grocery Shopping</h3></div></div>
+    <div class="short-player" data-id="YiAspOT0uu8"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YiAspOT0uu8/hqdefault.jpg" alt="French Coffee" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>A1 French — Coffee in the Snow</h3></div></div>
+  </div>
+</section>
 
-  <!-- Copy Toast -->
-  <div class="copy-toast" id="copy-toast">✉️ Email copied!</div>
-
-  <!-- ═══ HERO ═══ -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div>
-        <div class="badge"><span class="dot"></span> VIDEO EDITOR</div>
-        <h1>JEMS<br/><span class="grad">EDITIONS</span></h1>
-        <p>Video editor specializing in motion graphics, crypto content, and cinematic storytelling.</p>
-        <div class="stats-row">
-          <div class="stat-item"><div class="num">4+</div><div class="label">Years Editing</div></div>
-          <div class="stat-item"><div class="num">50+</div><div class="label">Videos Made</div></div>
-          <div class="stat-item"><div class="num">12+</div><div class="label">Projects Done</div></div>
-        </div>
-        <div class="cta-group">
-          <a href="#work" class="btn btn-primary">View Work →</a>
-          <a href="#contact" class="btn btn-outline">Contact</a>
-        </div>
+<!-- ═══ MEMES ═══ -->
+<section id="memes">
+  <div class="rv">
+    <div class="kicker">// memes</div>
+    <h2>Crypto Memes</h2>
+  </div>
+  <div class="flex-grid rv">
+    <div class="player-container" data-id="vXRN9On94e4">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/vXRN9On94e4/maxresdefault.jpg" alt="Vikings VIBE" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-frame">
-          <img src="logo.png" alt="JemsEditions" />
-        </div>
-      </div>
+      <div class="info"><span class="meme-label vibe">$VIBE</span><h3>Vikings VIBE CAT</h3></div>
     </div>
-  </section>
-
-  <!-- ═══ ABOUT ═══ -->
-  <section id="about">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// about</div>
-        <h2 class="sec-title">Who <span class="accent">I Am</span></h2>
+    <div class="player-container" data-id="sJ6wCi_tn2c">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/sJ6wCi_tn2c/maxresdefault.jpg" alt="He Sold VIBE" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="about-grid rv">
-        <div class="about-text">
-          <p><strong>4 years</strong> of video editing experience — from crypto content and motion graphics to educational storytelling. I started editing as a hobby and turned it into a full-time craft.</p>
-          <p>I'm obsessed with <strong>improving my skills</strong> every single project. Whether it's mastering a new transition, nailing the perfect color grade, or learning advanced motion design — I push myself to be better with every video.</p>
-          <div class="about-tags">
-            <span>Motion Design</span>
-            <span>Color Grading</span>
-            <span>Sound Design</span>
-            <span>Storytelling</span>
-            <span>Vertical Content</span>
-          </div>
-        </div>
-        <div class="about-text">
-          <p><strong>What I work with:</strong></p>
-          <p>CapCut, DaVinci Resolve — but the tool doesn't matter. What matters is the result. Fast turnaround, clean edits, and zero excuses.</p>
-          <p><strong>💡 Fun fact:</strong> I've edited content for Jupiter, Solana, and other crypto projects. I know the space, I know the pace, and I know what works.</p>
-        </div>
-      </div>
+      <div class="info"><span class="meme-label vibe">$VIBE</span><h3>He Sold? Pump It</h3></div>
     </div>
-  </section>
-
-  <!-- ═══ BRANDS ═══ -->
-  <section>
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// clients</div>
-        <h2 class="sec-title">Worked <span class="accent">With</span></h2>
-        <p class="sec-desc">Brands and projects I've contributed to.</p>
+    <div class="player-container" data-id="JKcx1qdCK1A">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt="Hank STUPID" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="brands-grid rv">
-        <span class="brand-item">Jupiter</span>
-        <span class="brand-item">Solana</span>
-        <span class="brand-item">$STUPID</span>
-        <span class="brand-item">$VIBE</span>
-        <span class="brand-item">Gaming Studios</span>
-        <span class="brand-item">Sport Brands</span>
-        <span class="brand-item">MedTech</span>
-        <span class="brand-item">Food & Beverage</span>
-        <span class="brand-item">Podcast Networks</span>
-        <span class="brand-item">Anonymous DAOs</span>
-      </div>
-      <p style="text-align:center;color:rgba(255,255,255,0.15);font-size:0.65rem;margin-top:1rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;">
-        + various undisclosed projects across different industries
-      </p>
+      <div class="info"><span class="meme-label stupid">$STUPID</span><h3>Hank Sold $STUPID</h3></div>
     </div>
-  </section>
-
-  <!-- ═══ MAIN VIDEO ═══ -->
-  <section id="work">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// featured</div>
-        <h2 class="sec-title">Showreel</h2>
-        <p class="sec-desc">My main video — a showcase of my editing style and skills.</p>
+    <div class="player-container" data-id="6nPwjlrcfrM">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/6nPwjlrcfrM/maxresdefault.jpg" alt="Oven STUPID" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="vid-wrap rv">
-        <div class="player-container featured" data-id="Fki4Ibh7CuQ">
-          <div class="thumb-wrap">
-            <img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel 2026" loading="lazy" />
-            <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
-          </div>
-          <div class="info"><h3>Showreel 2026 — Jems Editions</h3><span class="tag">Showreel</span></div>
-        </div>
-      </div>
+      <div class="info"><span class="meme-label stupid">$STUPID</span><h3>Oven Dance $STUPID</h3></div>
     </div>
-  </section>
-
-  <!-- ═══ MOTION GRAPHICS ═══ -->
-  <section>
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// 02</div>
-        <h2 class="sec-title"><span class="accent">MOTION GRAPHICS</span></h2>
-        <p class="sec-desc">Animation, motion design, and visual <i>vibes</i>.</p>
+    <div class="player-container" data-id="MdKh6WakcWg">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/MdKh6WakcWg/maxresdefault.jpg" alt="Wojak STUPID" loading="lazy" />
+        <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="v-grid rv">
-        <div class="player-container" data-id="KfJq8T5tyvQ"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KfJq8T5tyvQ/maxresdefault.jpg" alt="Motion" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Motion Graphics Reel</h3><span class="tag">Motion</span></div></div>
-        <div class="player-container" data-id="VzMy6LWtxus"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt="Jup and Juice" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jup and Juice</h3><span class="tag">Crypto</span></div></div>
-        <div class="player-container" data-id="YhWRC1jBvU0"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YhWRC1jBvU0/maxresdefault.jpg" alt="Presentation" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Presentation — Jems Editions</h3><span class="tag">Showreel</span></div></div>
-      </div>
+      <div class="info"><span class="meme-label stupid">$STUPID</span><h3>Wojak $STUPID Rich</h3></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ SOLANA × JUPITER ═══ -->
-  <section>
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// 03</div>
-        <h2 class="sec-title">SOLANA × <span class="accent">JUPITER</span></h2>
-        <p class="sec-desc">Vertical content about the <i>Solana</i> ecosystem and <i>Jupiter Exchange</i>.</p>
-      </div>
-      <div class="s-grid rv">
-        <div class="short-player" data-id="KnKRXY32IZ0"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KnKRXY32IZ0/hqdefault.jpg" alt="Jupiter 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
-        <div class="short-player" data-id="dMylb-XqIos"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/dMylb-XqIos/hqdefault.jpg" alt="Jupiter 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
-        <div class="short-player" data-id="VsYogMO-7cE"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/VsYogMO-7cE/hqdefault.jpg" alt="Solana" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Solana</h3></div></div>
-        <div class="short-player" data-id="_NPTPR6kMDU"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/_NPTPR6kMDU/hqdefault.jpg" alt="Jupiter 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Jupiter Exchange</h3></div></div>
-      </div>
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="rv" style="text-align:center">
+    <div class="kicker">// contact</div>
+    <h2>Let's Work Together</h2>
+    <p style="color:var(--m);font-size:16px;max-width:450px;margin:0 auto 25px">Available for editing, motion graphics, and content creation.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="mailto:jemseditions@gmail.com" class="button" style="font-size:13px;padding:14px 22px;text-decoration:none">✉️ jemseditions@gmail.com</a>
+      <a href="https://x.com/Jems_editions" target="_blank" class="ghost" style="padding:14px 22px;text-decoration:none;border-radius:13px">🐦 X / Twitter</a>
+      <a href="https://www.youtube.com/@Jems_Editions" target="_blank" class="ghost" style="padding:14px 22px;text-decoration:none;border-radius:13px">📺 YouTube</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ FRENCH ═══ -->
-  <section>
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// 04</div>
-        <h2 class="sec-title">FRANÇAIS <span class="accent">POUR DÉBUTANTS</span></h2>
-        <p class="sec-desc">Educational content — <i>French for A1 beginners</i>.</p>
-      </div>
-      <div class="s-grid rv">
-        <div class="short-player" data-id="8DCi2C6ReDg"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/8DCi2C6ReDg/hqdefault.jpg" alt="French 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>French A1 — Beginner</h3></div></div>
-        <div class="short-player" data-id="YiAspOT0uu8"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/YiAspOT0uu8/hqdefault.jpg" alt="French 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>French A1 — Beginner</h3></div></div>
-      </div>
-    </div>
-  </section>
+<footer style="text-align:center;padding:2rem;border-top:1px solid rgba(189,119,255,.06);font:11px 'DM Mono';color:var(--m)">© 2022 JemsEditions</footer>
 
-  <!-- ═══ MEMES ═══ -->
-  <section id="memes">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// 05</div>
-        <h2 class="sec-title">CRYPTO <span class="accent">MEMES</span></h2>
-        <p class="sec-desc">Memes and edits for <i>$STUPID</i> and <i>$VIBE</i>.</p>
-      </div>
-      <div class="meme-grid rv">
-        <div class="player-container" data-id="JKcx1qdCK1A"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt="$STUPID 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
-        <div class="player-container" data-id="6nPwjlrcfrM"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/6nPwjlrcfrM/maxresdefault.jpg" alt="$STUPID 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
-        <div class="player-container" data-id="MdKh6WakcWg"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/MdKh6WakcWg/maxresdefault.jpg" alt="$STUPID 3" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label stupid">$STUPID</span><h3>$STUPID Meme</h3></div></div>
-        <div class="player-container" data-id="sJ6wCi_tn2c"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/sJ6wCi_tn2c/maxresdefault.jpg" alt="$VIBE 1" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div></div>
-        <div class="player-container" data-id="vXRN9On94e4"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/vXRN9On94e4/maxresdefault.jpg" alt="$VIBE 2" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><span class="meme-label vibe">$VIBE</span><h3>$VIBE Meme</h3></div></div>
-      </div>
-    </div>
-  </section>
+<script>
+// Custom cursor
+const dot=document.querySelector('.dot'),ring=document.querySelector('.ring');
+document.addEventListener('mousemove',e=>{dot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;ring.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;dot.style.opacity=ring.style.opacity=1});
+document.querySelectorAll('a,button,.player-container,.short-player').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
 
-  <!-- ═══ SKILLS ═══ -->
-  <section id="skills">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// toolkit</div>
-        <h2 class="sec-title">Skills</h2>
-        <p class="sec-desc">Software and techniques I master.</p>
-      </div>
-      <div class="sk-grid">
-        <div class="sk-item rv"><div class="icon">✂️</div><div class="name">CapCut</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:95%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">🌀</div><div class="name">Motion Graphics</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:90%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">🎨</div><div class="name">Color Grading</div><div class="lvl">ADVANCED</div><div class="sk-bar"><div class="fill" style="width:85%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">📱</div><div class="name">Vertical Content</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:92%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">🔊</div><div class="name">Sound Design</div><div class="lvl">ADVANCED</div><div class="sk-bar"><div class="fill" style="width:75%"></div></div></div>
-        <div class="sk-item rv"><div class="icon">📝</div><div class="name">Story Editing</div><div class="lvl">EXPERT</div><div class="sk-bar"><div class="fill" style="width:90%"></div></div></div>
-      </div>
-    </div>
-  </section>
+// Scroll to top on refresh
+history.scrollRestoration='manual';window.scrollTo(0,0);
 
-  <!-- ═══ CONTACT ═══ -->
-  <section id="contact">
-    <div class="container">
-      <div class="rv">
-        <div class="sec-tag">// contact</div>
-        <h2 class="sec-title">Let's Talk</h2>
-        <p class="sec-desc">Got a project? Hit me up.</p>
-      </div>
-      <div class="c-box rv">
-        <h3>Work With Me</h3>
-        <p>Available for editing, motion graphics, and crypto content.</p>
-        <div class="c-links">
-          <a href="mailto:jemseditions@gmail.com" class="c-link">✉️ jemseditions@gmail.com</a>
-          <a href="https://x.com/Jems_editions" target="_blank" class="c-link">🐦 X / Twitter</a>
-          <a href="https://www.youtube.com/@Jems_Editions" target="_blank" class="c-link">📺 YouTube</a>
-        </div>
-      </div>
-    </div>
-  </section>
+// Scroll reveal
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-  <footer>© 2022 JemsEditions</footer>
+// Click sound
+const AudioCtx=window.AudioContext||window.webkitAudioContext;let audioCtx;
+function playClick(){
+  if(!audioCtx)audioCtx=new AudioCtx();
+  const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.frequency.setValueAtTime(880,audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(1200,audioCtx.currentTime+.04);
+  gain.gain.setValueAtTime(.08,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.08);
+  osc.start(audioCtx.currentTime);osc.stop(audioCtx.currentTime+.08);
+}
 
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    // Scroll to top on refresh
-    history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-
-    // ── Scroll reveal ──
-    const obs = new IntersectionObserver((e) => { e.forEach(x => { if(x.isIntersecting) x.target.classList.add('vis') }) }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
-    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-    const nv = document.querySelector('nav');
-    window.addEventListener('scroll', () => { nv.classList.toggle('scrolled', window.scrollY > 20) });
-
-    // ── Click sound ──
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    let audioCtx;
-    function playClick() {
-      if (!audioCtx) audioCtx = new AudioCtx();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain); gain.connect(audioCtx.destination);
-      osc.frequency.setValueAtTime(880, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.04);
-      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-      osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 0.08);
-    }
-
-    // ── Logo click — arcade pixel explosion ──
-    const logoTrigger = document.getElementById('logo-trigger');
-    if (logoTrigger) {
-      logoTrigger.addEventListener('click', function() {
-        const overlay = document.getElementById('logo-video-overlay');
-        const canvas = document.getElementById('lv-canvas');
-        const ctx = canvas.getContext('2d');
-        const textEl = document.getElementById('lv-text');
-        const closeBtn = document.getElementById('lv-close');
-        if (!overlay) return;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        overlay.classList.add('active');
-        overlay.style.opacity = '';
-        textEl.style.opacity = '';
-        textEl.style.transform = '';
-
-        const rect = logoTrigger.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-
-        // Minecraft-style block explosion — purple, cubes, chunky
-        const blocks = [];
-        const shades = ['#7c3aed','#6d28d9','#a78bfa','#8b5cf6','#5b21b6','#c4b5fd','#4c1d95','#9333ea'];
-
-        // Big blocks
-        for (let i = 0; i < 60; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 2 + Math.random() * 7;
-          const size = 10 + Math.random() * 25;
-          const col = shades[Math.floor(Math.random() * shades.length)];
-          blocks.push({
-            x: cx, y: cy,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed - Math.random() * 3,
-            w: size, h: size,
-            color: col,
-            light: `rgba(255,255,255,${0.15 + Math.random() * 0.15})`,
-            dark: `rgba(0,0,0,${0.15 + Math.random() * 0.15})`,
-            rot: Math.random() * Math.PI * 2,
-            rotSpd: (Math.random() - 0.5) * 0.15,
-            life: 1,
-            decay: 0.004 + Math.random() * 0.01
-          });
-        }
-
-        // Small debris (cubes)
-        for (let i = 0; i < 120; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = 3 + Math.random() * 10;
-          const col = shades[Math.floor(Math.random() * shades.length)];
-          blocks.push({
-            x: cx, y: cy,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed - Math.random() * 4,
-            w: 3 + Math.random() * 7,
-            h: 3 + Math.random() * 7,
-            color: col,
-            light: `rgba(255,255,255,${0.1 + Math.random() * 0.1})`,
-            dark: `rgba(0,0,0,${0.1 + Math.random() * 0.1})`,
-            rot: Math.random() * Math.PI * 2,
-            rotSpd: (Math.random() - 0.5) * 0.2,
-            life: 1,
-            decay: 0.006 + Math.random() * 0.015
-          });
-        }
-
-        let start = Date.now();
-        let animId;
-
-        function anim() {
-          const elapsed = (Date.now() - start) / 1000;
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-          // Dark overlay
-          ctx.fillStyle = 'rgba(3,3,6,0.9)';
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-          // Grid background (degen floor)
-          ctx.strokeStyle = 'rgba(124,58,237,0.06)';
-          ctx.lineWidth = 1;
-          const gs = 60;
-          for (let gx = 0; gx < canvas.width; gx += gs) {
-            ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, canvas.height); ctx.stroke();
-          }
-          for (let gy = 0; gy < canvas.height; gy += gs) {
-            ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(canvas.width, gy); ctx.stroke();
-          }
-
-          // Blocks
-          blocks.forEach(b => {
-            b.x += b.vx;
-            b.y += b.vy;
-            b.vy += 0.06;
-            b.vx *= 0.96;
-            b.vy *= 0.96;
-            b.rot += b.rotSpd;
-            b.life -= b.decay;
-            if (b.life <= 0) return;
-
-            ctx.save();
-            ctx.translate(b.x, b.y);
-            ctx.rotate(b.rot);
-            ctx.globalAlpha = Math.max(0, b.life);
-
-            // 3D-ish cube face
-            const s = b.w;
-            // Main face
-            ctx.fillStyle = b.color;
-            ctx.fillRect(-s/2, -s/2, s, s);
-            // Top highlight
-            ctx.fillStyle = b.light;
-            ctx.fillRect(-s/2, -s/2, s, s * 0.3);
-            // Right shadow
-            ctx.fillStyle = b.dark;
-            ctx.fillRect(s/2 - s * 0.2, -s/2, s * 0.2, s);
-            // Outline
-            ctx.strokeStyle = 'rgba(0,0,0,0.2)';
-            ctx.lineWidth = 0.5;
-            ctx.strokeRect(-s/2, -s/2, s, s);
-
-            ctx.restore();
-          });
-
-          // Text
-          if (elapsed > 0.15 && elapsed < 0.5) {
-            textEl.style.transition = 'all 0.5s cubic-bezier(.16,1,.3,1)';
-            textEl.style.opacity = '1';
-            textEl.style.transform = 'scale(1)';
-          }
-          if (elapsed > 2.0) {
-            const f = Math.max(0, 1 - (elapsed - 2.0) / 0.8);
-            textEl.style.opacity = f;
-            textEl.style.transform = `scale(${1 + (1 - f) * 0.3})`;
-          }
-
-          if (elapsed > 3.2) {
-            overlay.classList.remove('active');
-            overlay.style.opacity = '';
-            cancelAnimationFrame(animId);
-            return;
-          }
-          animId = requestAnimationFrame(anim);
-        }
-        anim();
-
-        closeBtn.onclick = () => {
-          overlay.classList.remove('active');
-          overlay.style.opacity = '';
-          cancelAnimationFrame(animId);
-        };
-      });
-    }
-
-    // ── Preloader ──
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('preloader').classList.add('hide');
-        setTimeout(() => {
-          document.getElementById('preloader').style.display = 'none';
-        }, 600);
-      }, 600);
-    });
-
-    // ── Copy email to clipboard ──
-    document.querySelectorAll('.c-link[href^="mailto:"]').forEach(el => {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        const email = this.href.replace('mailto:', '');
-        navigator.clipboard.writeText(email).then(() => {
-          const toast = document.getElementById('copy-toast');
-          toast.classList.add('show');
-          setTimeout(() => toast.classList.remove('show'), 2500);
-        });
-      });
-    });
-
-    // ── Back to top ──
-    const backTop = document.getElementById('back-top');
-    window.addEventListener('scroll', () => {
-      backTop.classList.toggle('visible', window.scrollY > 400);
-    });
-
-    // ── Google Analytics placeholder ──
-    // Uncomment and replace GA_MEASUREMENT_ID with your actual ID:
-    // const script = document.createElement('script');
-    // script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
-    // script.async = true;
-    // document.head.appendChild(script);
-    // window.dataLayer = window.dataLayer || [];
-    // function gtag(){dataLayer.push(arguments);}
-    // gtag('js', new Date());
-    // gtag('config', 'GA_MEASUREMENT_ID');
-
-    // ── YouTube Player ──
-    document.querySelectorAll('.player-container, .short-player').forEach(el => {
-      el.addEventListener('click', function() {
-        playClick();
-        const id = this.dataset.id;
-        if (!id || this.querySelector('.yt-player')) return;
-        const wrapper = document.createElement('div');
-        wrapper.className = 'yt-player';
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-        iframe.allowFullscreen = true;
-        wrapper.appendChild(iframe);
-        this.appendChild(wrapper);
-        if (getComputedStyle(this).position === 'static') this.style.position = 'relative';
-        const ov = this.querySelector('.ov');
-        const info = this.querySelector('.info');
-        if (ov) ov.style.display = 'none';
-        if (info) info.style.display = 'none';
-      });
-    });
-  </script>
+// YouTube player
+document.querySelectorAll('.player-container,.short-player').forEach(el=>{
+  el.addEventListener('click',function(){
+    playClick();const id=this.dataset.id;
+    if(!id||this.querySelector('.yt-embed'))return;
+    const w=document.createElement('div');w.className='yt-embed';
+    const f=document.createElement('iframe');
+    f.src=`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+    f.allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture';
+    f.allowFullscreen=true;w.appendChild(f);this.appendChild(w);
+    const ov=this.querySelector('.ov'),info=this.querySelector('.info');
+    if(ov)ov.style.display='none';if(info)info.style.display='none';
+  });
+});
+</script>
 </body>
 </html>
