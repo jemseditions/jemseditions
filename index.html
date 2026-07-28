@@ -9,6 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#06050c;--p:#8b3dff;--t:#f7f4ff;--m:#aaa3ba;--l:rgba(182,123,255,.22)}
+::selection{background:rgba(161,82,255,.34);color:#fff;text-shadow:none}
+::-moz-selection{background:rgba(161,82,255,.34);color:#fff;text-shadow:none}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
 body{
@@ -22,10 +24,11 @@ body:before{
   background-size:72px 72px;mask-image:linear-gradient(#000,transparent 80%)
 }
 a{color:inherit}
-.dot,.ring{position:fixed;z-index:999;pointer-events:none;left:0;top:0}
-.dot{width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(193,127,255,.5);transition:opacity .2s}
-.ring{width:38px;height:38px;margin:-19px;border:1px solid rgba(193,127,255,.5);border-radius:50%;transition:width .2s,height .2s,margin .2s}
-.ring.hover{width:64px;height:64px;margin:-32px;border-color:rgba(193,127,255,.8);background:rgba(140,61,255,.08)}
+.dot,.ring,.cursor-trail{position:fixed;z-index:999;pointer-events:none;left:0;top:0;will-change:transform}
+.dot{width:7px;height:7px;margin:-3.5px;border-radius:50%;background:#fff;box-shadow:0 0 18px #c77eff;transition:opacity .2s}
+.ring{width:42px;height:42px;margin:-21px;border:1px solid rgba(213,173,255,.92);border-radius:50%;background:transparent;box-shadow:0 0 18px rgba(129,52,255,.25);backdrop-filter:none!important;transition:width .3s cubic-bezier(.16,1,.3,1),height .3s cubic-bezier(.16,1,.3,1),margin .3s cubic-bezier(.16,1,.3,1),border-color .3s,background .3s}
+.ring.hover{width:62px;height:62px;margin:-31px;border-color:#fff;background:transparent;box-shadow:0 0 26px rgba(160,71,255,.42)}
+.cursor-trail{width:18px;height:18px;margin:-9px;border-radius:50%;border:1px solid rgba(190,128,255,.35);filter:blur(.2px);opacity:0;transition:opacity .2s}
 @media(pointer:fine){body,body a,body button{cursor:none}}
 
 nav{
@@ -46,6 +49,9 @@ nav{
   display:inline-flex;align-items:center;gap:8px;position:relative
 }
 .hire .pulse-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;display:inline-block;flex-shrink:0}
+.sound-toggle{border:1px solid var(--l);border-radius:99px;background:rgba(14,10,28,.7);color:#cfc7e4;font:500 10px 'DM Mono';letter-spacing:.08em;padding:10px 13px;transition:.3s}.sound-toggle:not([aria-pressed="false"]){border-color:#bc7bff;color:#fff;background:rgba(138,61,255,.25)}
+.contact-link{position:relative;isolation:isolate;overflow:hidden;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .45s,box-shadow .45s,color .45s!important}.contact-link:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(147,63,255,.36),rgba(196,116,255,.08));transform:translateY(105%);transition:transform .5s cubic-bezier(.16,1,.3,1)}.contact-link:hover{transform:translateY(-5px) scale(1.025);border-color:rgba(205,151,255,.9)!important;color:#fff!important;box-shadow:0 14px 30px rgba(112,40,235,.32)}.contact-link:hover:before{transform:translateY(0)}.contact-link:hover::first-letter{color:#fff}
+.links a,.actions a,.hire,.sound-toggle{position:relative;isolation:isolate;overflow:hidden;transition:transform .45s cubic-bezier(.16,1,.3,1),border-color .45s,box-shadow .45s,color .45s!important}.links a:before,.actions a:before,.hire:before,.sound-toggle:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(147,63,255,.36),rgba(196,116,255,.08));transform:translateY(105%);transition:transform .5s cubic-bezier(.16,1,.3,1)}.links a:hover,.actions a:hover,.hire:hover,.sound-toggle:hover{transform:translateY(-4px) scale(1.025);border-color:rgba(205,151,255,.9)!important;color:#fff!important;box-shadow:0 12px 28px rgba(112,40,235,.3)}.links a:hover:before,.actions a:hover:before,.hire:hover:before,.sound-toggle:hover:before{transform:translateY(0)}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 
 .hero{
@@ -63,7 +69,12 @@ nav{
 .hero p{color:var(--m);font-size:16px;line-height:1.7;max-width:455px}
 .actions{display:flex;gap:15px;margin-top:35px}
 .ghost{border:1px solid var(--l);border-radius:13px;padding:14px 21px;text-decoration:none;color:#d4cde3}
-.art{height:450px;position:relative}
+.art{height:450px;position:relative;display:grid;place-items:center;isolation:isolate}
+.logo-orbit{position:absolute;width:min(620px,122%);aspect-ratio:1;z-index:-1;filter:drop-shadow(0 0 32px rgba(136,52,255,.58));mask-image:radial-gradient(circle,black 40%,rgba(0,0,0,.8) 56%,transparent 76%);-webkit-mask-image:radial-gradient(circle,black 40%,rgba(0,0,0,.8) 56%,transparent 76%)}
+.logo-core{width:235px;aspect-ratio:1;border-radius:50%;object-fit:cover;position:relative;z-index:2;box-shadow:0 0 0 1px rgba(242,206,121,.5),0 0 40px rgba(155,67,255,.45),0 24px 55px rgba(0,0,0,.65);transition:transform .85s cubic-bezier(.16,1,.3,1),filter .85s cubic-bezier(.16,1,.3,1)}
+.art:hover .logo-core{transform:scale(1.055) rotate(2deg);filter:brightness(1.1)}
+.logo-tag{position:absolute;bottom:5%;right:10%;padding:11px 15px;border:1px solid rgba(190,128,255,.35);border-radius:8px;background:rgba(8,5,18,.52);backdrop-filter:blur(10px);font:500 10px 'DM Mono';letter-spacing:.11em;color:#cab6e9}
+.art .back,.art .side,.art .reel{display:none}
 .back,.side,.reel{position:absolute;overflow:hidden;border:1px solid rgba(189,119,255,.36);background:#100c21;box-shadow:0 25px 60px #0008}
 .back{width:260px;height:165px;right:5%;top:4%;opacity:.6;transform:rotate(-5deg)}
 .back img,.side img{width:100%;height:100%;object-fit:cover}
@@ -130,6 +141,9 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 .player-container .yt-embed{position:absolute;top:0;left:0;width:100%;height:100%;z-index:5}
 .player-container .yt-embed iframe{width:100%;height:100%;border:0}
 
+/* Dock / elastic gallery — cards grow in place and neighbouring work moves naturally. */
+.vid-grid,.meme-grid{display:flex!important;gap:14px;align-items:flex-start;overflow:hidden}.vid-grid .player-container,.meme-grid .player-container{flex:1 1 0;min-width:0;height:auto;transition:flex 1.25s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}.vid-grid .player-container.featured{flex:1.75 1 0;grid-column:auto;max-width:none;width:auto;justify-self:auto}.vid-grid:hover .player-container:hover,.meme-grid:hover .player-container:hover{flex:1.9 1 0;z-index:8}.vid-grid:hover .player-container:not(:hover),.meme-grid:hover .player-container:not(:hover){filter:brightness(.76) saturate(.75)}.short-grid{flex-wrap:nowrap;overflow:hidden}.short-player{transition:flex 1.15s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}.short-grid:hover .short-player:hover{flex:1 1 220px;transform:translateY(-5px) scale(1.01)}.short-grid:hover .short-player:not(:hover){filter:brightness(.76) saturate(.75);transform:scale(.985)}
+
 /* ── Shorts grid ── */
 .short-grid{
   display:flex;flex-wrap:wrap;gap:1rem;align-items:stretch;margin-top:2rem
@@ -170,6 +184,33 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 .meme-label.stupid{background:rgba(245,158,11,.15);color:#f59e0b}
 .meme-label.vibe{background:rgba(236,72,153,.15);color:#ec4899}
 
+/* ── Preloader ── */
+#preloader{
+  position:fixed;inset:0;z-index:99999;
+  background:#06050c;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .8s cubic-bezier(.16,1,.3,1);
+  pointer-events:none
+}
+#preloader.show{opacity:1;pointer-events:auto}
+#preloader.hide{opacity:0;pointer-events:none}
+#preloader .pl-title{
+  font-size:2.8rem;font-weight:800;letter-spacing:-.06em;
+  background:linear-gradient(135deg,#a75cff,#7c3aed);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:plPulse 1.6s ease-in-out infinite
+}
+#preloader .pl-bar{
+  width:160px;height:2px;background:rgba(124,58,237,.12);
+  border-radius:2px;margin-top:1.5rem;overflow:hidden
+}
+#preloader .pl-bar .pl-fill{
+  height:100%;width:0%;background:linear-gradient(90deg,#7c3aed,#a75cff);
+  border-radius:2px;animation:plLoad 1.2s cubic-bezier(.16,1,.3,1) forwards
+}
+@keyframes plPulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes plLoad{0%{width:0%}100%{width:100%}}
+
 .rv{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
 .rv.vis{opacity:1;transform:translateY(0)}
 
@@ -189,12 +230,19 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 </head>
 <body>
 
+<div id="preloader" class="show">
+  <div class="pl-title">JemsEditions</div>
+  <div class="pl-bar"><div class="pl-fill"></div></div>
+</div>
+
 <div class="dot"></div>
 <div class="ring"></div>
+<div class="cursor-trail"></div>
 
 <nav>
-  <a class="brand" href="#home"><img src="logo.png" alt=""><span>Jems<b>Editions</b></span></a>
+  <a class="brand" href="#home"><img src="jems-mark.png" alt="Jems Editions"><span>Jems<b>Editions</b></span></a>
   <div class="links"><a href="#home">Home</a><a href="#work">Work</a><a href="#memes">Memes</a><a href="#contact">Contact</a></div>
+  <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false">SOUND: OFF</button>
   <a class="hire" href="#contact"><span class="pulse-dot"></span> Let's Build →</a>
 </nav>
 
@@ -202,11 +250,14 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 <section class="hero">
   <div>
     <div class="eyebrow">Video editor & motion designer</div>
-    <h1>Every frame<br>tells a <i>story.</i></h1>
+    <h1>Less talking.<br>More <i>editing.</i></h1>
     <p>Video editing, motion graphics and cinematic storytelling for brands, creators and innovative projects.</p>
     <div class="actions"><a class="button" href="#work">View My Work →</a><a class="ghost" href="#contact">Get in Touch →</a></div>
   </div>
   <div class="art">
+    <canvas class="logo-orbit" id="logo-orbit" aria-hidden="true"></canvas>
+    <img class="logo-core" src="jems-mark.png" alt="Jems Editions logo">
+    <span class="logo-tag">JEMS EDITIONS / VISUAL MOTION</span>
     <div class="back"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt=""></div>
     <div class="side"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt=""></div>
     <a class="reel watch" href="https://youtu.be/Fki4Ibh7CuQ" data-id="Fki4Ibh7CuQ">
@@ -228,7 +279,7 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 <section id="work">
   <div class="rv">
     <div class="kicker">Showreel</div>
-    <h2>The reel that started it all — plus a few bangers.</h2>
+    <h2>This is What I Do</h2>
   </div>
   <div class="vid-grid rv">
     <div class="player-container featured" data-id="Fki4Ibh7CuQ">
@@ -331,20 +382,38 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
     <h2>Let's Work Together</h2>
     <p style="color:var(--m);font-size:16px;max-width:450px;margin:0 auto 25px">Available for editing, motion graphics, and content creation.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="mailto:jemseditions@gmail.com" class="button" style="font-size:13px;padding:14px 22px;text-decoration:none">✉️ jemseditions@gmail.com</a>
-      <a href="https://x.com/Jems_editions" target="_blank" class="ghost" style="padding:14px 22px;text-decoration:none;border-radius:13px">🐦 X / Twitter</a>
-      <a href="https://www.youtube.com/@Jems_Editions" target="_blank" class="ghost" style="padding:14px 22px;text-decoration:none;border-radius:13px">📺 YouTube</a>
+      <a href="mailto:jemseditions@gmail.com" class="button contact-link" style="font-size:13px;padding:14px 22px;text-decoration:none">✉️ jemseditions@gmail.com</a>
+      <a href="https://x.com/Jems_editions" target="_blank" class="ghost contact-link" style="padding:14px 22px;text-decoration:none;border-radius:13px">🐦 X / Twitter</a>
+      <a href="https://www.youtube.com/@Jems_Editions" target="_blank" class="ghost contact-link" style="padding:14px 22px;text-decoration:none;border-radius:13px">📺 YouTube</a>
     </div>
   </div>
 </section>
 
 <footer style="text-align:center;padding:2rem;border-top:1px solid rgba(189,119,255,.06);font:11px 'DM Mono';color:var(--m)">© 2022 JemsEditions</footer>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
 <script>
-// Custom cursor
-const dot=document.querySelector('.dot'),ring=document.querySelector('.ring');
-document.addEventListener('mousemove',e=>{dot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;ring.style.transform=`translate(${e.clientX}px,${e.clientY}px)`});
-document.querySelectorAll('a,button,.player-container,.short-player').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
+// Fluid premium cursor: the orbit stretches in the direction of travel and leaves a light trail.
+const dot=document.querySelector('.dot'),ring=document.querySelector('.ring'),trail=document.querySelector('.cursor-trail');
+if(matchMedia('(pointer:fine)').matches){let x=-100,y=-100,rx=-100,ry=-100,px=-100,py=-100;document.addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY;dot.style.opacity=ring.style.opacity=trail.style.opacity='1'});document.querySelectorAll('a,button,.player-container,.short-player,.logo-core').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});(function cursorFrame(){rx+=(x-rx)*.32;ry+=(y-ry)*.32;const dx=rx-px,dy=ry-py,velocity=Math.min(Math.hypot(dx,dy)/18,.42),angle=Math.atan2(dy,dx)*180/Math.PI;dot.style.transform=`translate3d(${x}px,${y}px,0)`;ring.style.transform=`translate3d(${rx}px,${ry}px,0) rotate(${angle}deg) scaleX(${1+velocity}) scaleY(${1-velocity*.52})`;trail.style.transform=`translate3d(${rx-dx*8}px,${ry-dy*8}px,0) scale(${1+velocity*1.8})`;px=rx;py=ry;requestAnimationFrame(cursorFrame)})()}
+
+// Three.js logo field: lightweight rings and particles, rendered only in the hero.
+(()=>{const c=document.getElementById('logo-orbit');if(!c||!window.THREE||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=new THREE.WebGLRenderer({canvas:c,alpha:true,antialias:true}),s=new THREE.Scene(),cam=new THREE.PerspectiveCamera(40,1,.1,100),g=new THREE.Group();r.setPixelRatio(Math.min(devicePixelRatio,1.5));cam.position.z=8;s.add(g);[[3.3,.85,0],[2.7,.72,1.05],[3.8,.62,2.1]].forEach(([rad,squash,rot],i)=>{const pts=[];for(let n=0;n<96;n++){const a=n/95*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*rad,Math.sin(a)*rad*squash,0))}const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:i===1?0xe6c16f:0x9d55ff,transparent:true,opacity:i===1?.72:.3}));line.rotation.set(i*.48,i*.7,rot);g.add(line)});const particles=new Float32Array(240);for(let i=0;i<80;i++){const a=Math.random()*Math.PI*2,rad=2.5+Math.random()*1.6;particles.set([Math.cos(a)*rad,Math.sin(a)*rad*.75,(Math.random()-.5)*1.3],i*3)}g.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position',new THREE.BufferAttribute(particles,3)),new THREE.PointsMaterial({color:0xd9b7ff,size:.028,transparent:true,opacity:.78})));const resize=()=>{const b=c.getBoundingClientRect();r.setSize(b.width,b.height,false);cam.aspect=b.width/b.height;cam.updateProjectionMatrix()};new ResizeObserver(resize).observe(c);resize();(function loop(t){g.rotation.y=t*.00014;g.rotation.x=Math.sin(t*.00022)*.12;r.render(s,cam);requestAnimationFrame(loop)})(0)})();
+
+// Opt-in sound design: hover previews are silent until a visitor explicitly enables them.
+const soundToggle=document.getElementById('sound-toggle');let soundOn=false,previewAudio;function hoverTone(){if(!soundOn)return;if(!previewAudio)previewAudio=new (window.AudioContext||window.webkitAudioContext)();const now=previewAudio.currentTime,osc=previewAudio.createOscillator(),gain=previewAudio.createGain(),filter=previewAudio.createBiquadFilter();osc.type='triangle';osc.frequency.setValueAtTime(245,now);osc.frequency.exponentialRampToValueAtTime(180,now+.055);filter.type='lowpass';filter.frequency.value=1100;filter.Q.value=.7;gain.gain.setValueAtTime(.009,now);gain.gain.exponentialRampToValueAtTime(.0001,now+.075);osc.connect(filter);filter.connect(gain);gain.connect(previewAudio.destination);osc.start(now);osc.stop(now+.08)}soundToggle?.addEventListener('click',()=>{soundOn=!soundOn;soundToggle.setAttribute('aria-pressed',String(soundOn));soundToggle.textContent=soundOn?'SOUND: ON':'SOUND: OFF';if(soundOn&&previewAudio)previewAudio.resume()});
+
+// macOS-style dock response: softly weighted, so it glides rather than snaps.
+document.querySelectorAll('.vid-grid,.meme-grid,.short-grid').forEach(gallery=>{const cards=[...gallery.querySelectorAll('.player-container,.short-player')];cards.forEach(card=>card.addEventListener('pointerenter',hoverTone));gallery.addEventListener('pointermove',e=>{cards.forEach(card=>{const r=card.getBoundingClientRect(),distance=Math.abs(e.clientX-(r.left+r.width/2)),strength=Math.max(0,1-distance/310);card.style.transform=`translateY(${-strength*6}px) scale(${1+strength*.012})`;});});gallery.addEventListener('pointerleave',()=>cards.forEach(card=>card.style.transform=''));});
+
+// Preloader
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    document.getElementById('preloader').classList.remove('show');
+    document.getElementById('preloader').classList.add('hide');
+    setTimeout(()=>{document.getElementById('preloader').style.display='none'},800);
+  },800);
+});
 
 // Scroll to top on refresh
 history.scrollRestoration='manual';window.scrollTo(0,0);
