@@ -22,10 +22,10 @@ body:before{
   background-size:72px 72px;mask-image:linear-gradient(#000,transparent 80%)
 }
 a{color:inherit}
-.dot,.ring{position:fixed;z-index:999;pointer-events:none;left:0;top:0;opacity:0;transition:opacity .3s}
-.dot{width:5px;height:5px;margin:-2.5px;border-radius:50%;background:#fff;box-shadow:0 0 14px #c17fff;mix-blend-mode:difference}
-.ring{width:40px;height:40px;margin:-20px;border:1.5px solid rgba(193,127,255,.6);border-radius:50%;transition:width .25s cubic-bezier(.16,1,.3,1),height .25s cubic-bezier(.16,1,.3,1),margin .25s cubic-bezier(.16,1,.3,1),background .25s;backdrop-filter:blur(2px)}
-.ring.hover{width:70px;height:70px;margin:-35px;background:rgba(140,61,255,.12);border-color:rgba(193,127,255,.8);box-shadow:0 0 30px rgba(140,61,255,.15)}
+.dot,.ring{position:fixed;z-index:999;pointer-events:none;left:0;top:0}
+.dot{width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 12px rgba(193,127,255,.5);transition:opacity .2s}
+.ring{width:38px;height:38px;margin:-19px;border:1px solid rgba(193,127,255,.5);border-radius:50%;transition:width .2s,height .2s,margin .2s}
+.ring.hover{width:64px;height:64px;margin:-32px;border-color:rgba(193,127,255,.8);background:rgba(140,61,255,.08)}
 @media(pointer:fine){body,body a,body button{cursor:none}}
 
 nav{
@@ -343,7 +343,7 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 <script>
 // Custom cursor
 const dot=document.querySelector('.dot'),ring=document.querySelector('.ring');
-document.addEventListener('mousemove',e=>{dot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;ring.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;dot.style.opacity=ring.style.opacity=1});
+document.addEventListener('mousemove',e=>{dot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;ring.style.transform=`translate(${e.clientX}px,${e.clientY}px)`});
 document.querySelectorAll('a,button,.player-container,.short-player').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
 
 // Scroll to top on refresh
