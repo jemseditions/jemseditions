@@ -89,6 +89,7 @@ nav{
 .stats{display:flex;gap:45px;grid-column:1/-1;margin-top:20px}
 .stat b{display:block;font-size:30px;font-weight:800;background:linear-gradient(90deg,#8940ff,#ce7eff);-webkit-background-clip:text;color:transparent}
 .stat span{font-size:11px;color:var(--m);display:block;margin-top:2px}
+.about-panel{display:grid;grid-template-columns:minmax(180px,.7fr) minmax(0,1.3fr);gap:clamp(28px,6vw,90px);align-items:start;padding:clamp(32px,5vw,60px);border:1px solid var(--l);border-radius:20px;background:linear-gradient(135deg,rgba(77,30,147,.22),rgba(11,8,23,.6));box-shadow:inset 0 1px 0 rgba(224,194,255,.06)}.about-panel h3{font-size:clamp(1.7rem,3vw,3rem);line-height:1.04;letter-spacing:-.06em}.about-panel p{font-size:clamp(1rem,1.35vw,1.18rem);line-height:1.7;color:var(--m)}.about-panel strong{display:block;margin-bottom:14px;color:#d8c4ff;font:500 11px 'DM Mono';letter-spacing:.11em;text-transform:uppercase}@media(max-width:700px){.about-panel{grid-template-columns:1fr}}
 
 /* ── Sections ── */
 section{padding:60px clamp(22px,7vw,132px)}
@@ -143,6 +144,7 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 
 /* Dock / elastic gallery — cards grow in place and neighbouring work moves naturally. */
 .vid-grid,.meme-grid{display:flex!important;gap:14px;align-items:flex-start;overflow:hidden}.vid-grid .player-container,.meme-grid .player-container{flex:1 1 0;min-width:0;height:auto;transition:flex 1.25s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1),filter .8s cubic-bezier(.16,1,.3,1)}.vid-grid .player-container.featured{flex:1.75 1 0;grid-column:auto;max-width:none;width:auto;justify-self:auto}.vid-grid:hover .player-container:hover,.meme-grid:hover .player-container:hover{flex:1.9 1 0;z-index:8}.vid-grid:hover .player-container:not(:hover),.meme-grid:hover .player-container:not(:hover){filter:brightness(.76) saturate(.75)}.short-grid{flex-wrap:nowrap;overflow:hidden}.short-player{transition:flex 1.15s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1),filter .75s cubic-bezier(.16,1,.3,1)}.short-grid:hover .short-player:hover{flex:1 1 220px;transform:translateY(-5px) scale(1.01)}.short-grid:hover .short-player:not(:hover){filter:brightness(.76) saturate(.75);transform:scale(.985)}
+.vid-grid .player-container.featured{flex:2.7 1 0;border-color:rgba(218,177,255,.72);box-shadow:0 0 0 1px rgba(146,61,255,.25),0 20px 50px rgba(78,24,154,.22)}.vid-grid .player-container.featured .thumb-wrap:after{content:'FEATURED — TUTANKHAMUN DOCUMENTARY / DAVINCI RESOLVE';position:absolute;left:12px;top:12px;z-index:3;padding:7px 9px;border-radius:5px;background:rgba(11,7,22,.78);border:1px solid rgba(211,167,255,.38);color:#e4d0ff;font:500 9px 'DM Mono';letter-spacing:.08em}.vid-grid .player-container.featured .info h3{font-size:clamp(1rem,1.35vw,1.28rem)}
 
 /* ── Shorts grid ── */
 .short-grid{
@@ -215,16 +217,7 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
 .rv.vis{opacity:1;transform:translateY(0)}
 
 @media(max-width:800px){
-  .hero{grid-template-columns:1fr;padding-top:30px}
-  .art{height:300px;margin-top:20px}
-  .back{width:160px;height:100px;right:2%;top:2%}
-  .side{width:100px;height:70px;right:1%;bottom:10%}
-  .reel{width:90%;right:5%;top:8%}
-  .stats{gap:20px;flex-wrap:wrap}
-  .links{display:none}
-  .vid-grid,.meme-grid{grid-template-columns:1fr}
-  .short-player{flex:1 1 130px;max-width:160px}
-  .vid-grid .player-container.featured{max-width:100%}
+  body{overflow-x:hidden}nav{height:72px;padding:0 18px;gap:10px}.brand{font-size:18px}.brand img{width:34px;height:34px}.hire{padding:11px 14px;font-size:11px;white-space:nowrap}.sound-toggle{display:none}.hero{grid-template-columns:1fr;padding:34px 20px 45px;min-height:auto}.hero h1{font-size:clamp(3rem,14vw,4.4rem)}.hero p{font-size:14px}.actions{margin-top:25px;flex-wrap:wrap}.art{height:300px;margin-top:24px;order:-1}.logo-core{width:175px}.liquid-logo{width:205px;height:205px}.logo-tag{right:4%;bottom:1%;font-size:8px;padding:8px 10px}.back{width:160px;height:100px;right:2%;top:2%}.side{width:100px;height:70px;right:1%;bottom:10%}.reel{width:90%;right:5%;top:8%}.stats{gap:12px;flex-wrap:wrap;margin-top:28px}.stat{flex:1 1 29%;min-width:88px}.stat b{font-size:25px}section{padding:54px 20px}section h2{font-size:clamp(1.9rem,9vw,2.7rem);margin-bottom:23px}.links{display:none}.vid-grid,.meme-grid{display:flex!important;flex-direction:column;overflow:visible;gap:14px}.vid-grid .player-container,.meme-grid .player-container,.vid-grid .player-container.featured{width:100%;flex:none;transform:none!important;filter:none!important}.vid-grid .player-container.featured{order:-1}.short-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:-20px;padding-right:20px}.short-player{flex:0 0 58vw;max-width:none;scroll-snap-align:start}.short-player:hover{flex:0 0 58vw;transform:none}.about-panel{padding:27px}.contact-link{max-width:100%;overflow-wrap:anywhere}footer{padding:22px 20px;gap:12px;flex-wrap:wrap}
 }
 </style>
 </head>
@@ -260,8 +253,8 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
     <span class="logo-tag">JEMS EDITIONS / VISUAL MOTION</span>
     <div class="back"><img src="https://i.ytimg.com/vi/VzMy6LWtxus/maxresdefault.jpg" alt=""></div>
     <div class="side"><img src="https://i.ytimg.com/vi/JKcx1qdCK1A/maxresdefault.jpg" alt=""></div>
-    <a class="reel watch" href="https://youtu.be/Fki4Ibh7CuQ" data-id="Fki4Ibh7CuQ">
-      <img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel Jems Editions">
+    <a class="reel watch" href="https://www.youtube.com/watch?v=d_VaYzIFHi0" data-id="d_VaYzIFHi0">
+      <img src="https://i.ytimg.com/vi/d_VaYzIFHi0/maxresdefault.jpg" alt="Featured Jems Editions video">
       <div class="ui"><span>● REC</span><span>00:00:24</span></div>
       <span class="play">▶</span>
       <div class="caption"><span>JEMS EDITIONS</span><span>4K</span></div>
@@ -282,12 +275,13 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
     <h2>This is What I Do</h2>
   </div>
   <div class="vid-grid rv">
-    <div class="player-container featured" data-id="Fki4Ibh7CuQ">
-      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel 2026" loading="lazy" />
+    <div class="player-container featured" data-id="d_VaYzIFHi0">
+      <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/d_VaYzIFHi0/maxresdefault.jpg" alt="Featured Jems Editions video" loading="eager" />
         <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
       </div>
-      <div class="info"><h3>Showreel 2026 — Jems Editions</h3><span class="tag">Showreel</span></div>
+      <div class="info"><h3>Tutankhamun Documentary — DaVinci Resolve</h3><span class="tag">Featured Documentary</span></div>
     </div>
+    <div class="player-container" data-id="Fki4Ibh7CuQ"><div class="thumb-wrap"><img src="https://i.ytimg.com/vi/Fki4Ibh7CuQ/maxresdefault.jpg" alt="Showreel 2026" loading="lazy" /><div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div></div><div class="info"><h3>Showreel 2026 — Jems Editions</h3><span class="tag">Showreel</span></div></div>
     <div class="player-container" data-id="KfJq8T5tyvQ">
       <div class="thumb-wrap"><img src="https://i.ytimg.com/vi/KfJq8T5tyvQ/maxresdefault.jpg" alt="Mortal Kombat" loading="lazy" />
         <div class="ov"><div class="pb"><svg viewBox="0 0 24 24"><polygon points="6,3 21,12 6,21"/></svg></div></div>
@@ -306,6 +300,14 @@ section h2{font-size:clamp(2rem,3vw,3rem);font-weight:800;letter-spacing:-.04em;
       </div>
       <div class="info"><h3>JUP &amp; JUICE with co-founder of Okay Bears</h3><span class="tag">Crypto</span></div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ SHORTS ═══ -->
+<section id="about">
+  <div class="rv about-panel">
+    <div><div class="kicker">About</div><h3>Craft meets intelligent workflow.</h3></div>
+    <div><strong>Video Editor | DaVinci Resolve | 3D Animation | AI-Assisted Editing</strong><p>4 years of experience in video editing, motion graphics, 3D animation, color grading, and sound design. I combine traditional post-production with AI-assisted tools to create polished, cinematic content and more efficient creative workflows.</p></div>
   </div>
 </section>
 
